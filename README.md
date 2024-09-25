@@ -103,6 +103,8 @@ composer create-project laravel/laravel .
 Iniciar o projeto criado com Laravel
 ```
 php artisan serve
+
+php artisan serve --port=9000
 ```
 
 Acessar o conteúdo padrão do Laravel
@@ -127,4 +129,9 @@ cd .\app_super_gestao\public\
 http://localhost:8000
 ```
 php -S localhost:8000
+```
+
+Artisan comando que traz algo mais ou menos pronto
+```
+make:<codigo> 
 ```
