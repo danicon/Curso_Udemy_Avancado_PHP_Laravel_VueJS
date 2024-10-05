@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SobreNosController extends Controller
+class SobrenosController extends Controller
 {
     public function sobreNos() {
         echo "Sobre-nós";
