@@ -1,19 +1,22 @@
 <h3>Fornecedor</h3>
 
 @php
-    // if() {
-
-    // } elseif() {
- 
-    // } else {
+    // if(!<condição>) { // enquanto executa se o retorno for true
 
     // }
 @endphp
+{{-- @dd($fornecedores) --}}
+{{-- @unless executa se o retorno for false --}}
 
-@if(count($fornecedores) > 0 && count($fornecedores) < 10)
-    <h3>Existem alguns forncedores cadastrados</h3>
-@elseif(count($fornecedores) > 10)
-    <h3>Existem varios forncedores cadastrados</h3>
-@else
-    <h3>Ainda não existem forncedores cadastrados</h3>
+Fornecedores: {{ $fornecedores[0]['nome'] }}
+</br>
+Status: {{ $fornecedores[0]['status'] }}
+</br>
+@if( !($fornecedores[0]['status'] == 'S') )
+    Fornecedor inativo
 @endif
+<br/>
+@unless($fornecedores[0]['status'] == 'S') <!-- se oretorno da condição fpr false -->
+    Fornecedor inativo
+@endunless
+<br/>
