@@ -1,15 +1,19 @@
 <h3>Fornecedor</h3>
 
-{{ 'Texto de teste'}}
-<?= 'Texto de teste' ?>
-
-{{-- Fica o comentario que sera descartado pelo interpretador do blade --}}
-
 @php
-    // Para comentarios de uma linha
-    /*
-        comentario para varias linhas
-    */
+    // if() {
 
-    echo 'Texto de teste';
+    // } elseif() {
+ 
+    // } else {
+
+    // }
 @endphp
+
+@if(count($fornecedores) > 0 && count($fornecedores) < 10)
+    <h3>Existem alguns forncedores cadastrados</h3>
+@elseif(count($fornecedores) > 10)
+    <h3>Existem varios forncedores cadastrados</h3>
+@else
+    <h3>Ainda não existem forncedores cadastrados</h3>
+@endif
