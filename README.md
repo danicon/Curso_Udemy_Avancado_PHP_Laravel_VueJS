@@ -135,3 +135,14 @@ Artisan comando que traz algo mais ou menos pronto
 ```
 make:<codigo> 
 ```
+
+Criando controllers
+```
+php artisan make:controller PrincipalController 
+```
+
+Lista as rotas
+```
+
+php artisan route::list
+```
