@@ -146,3 +146,11 @@ Lista as rotas
 
 php artisan route::list
 ```
+
+Limpar as views compiladas do caches
+```
+
+php artisan view:clear
+```
+
+Blade é motor de rederização de Views
