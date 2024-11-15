@@ -154,3 +154,9 @@ php artisan view:clear
 ```
 
 Blade é motor de rederização de Views
+
+Criando um modelo (Model), com o -m automaticamente cria uma Migrations (objetivo armazenar dados no BD)
+```
+
+php artisan make:model SiteContato -m
+```
