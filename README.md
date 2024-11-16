@@ -160,3 +160,9 @@ Criando um modelo (Model), com o -m automaticamente cria uma Migrations (objetiv
 
 php artisan make:model SiteContato -m
 ```
+
+Executa todas as migrations contidas dentro do projeto /database/migrations
+```
+
+php artisan migrate
+```
