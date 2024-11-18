@@ -172,3 +172,9 @@ Instrução executada pelo PHP para dar o retorno (bool(true))
 
 php -r "var_dump(extension_loaded('pdo_mysql'));"
 ```
+
+Cria as tabelas no BD
+```
+
+php artisan migrate
+```
