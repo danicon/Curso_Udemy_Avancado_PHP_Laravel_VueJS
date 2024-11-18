@@ -166,3 +166,9 @@ Executa todas as migrations contidas dentro do projeto /database/migrations
 
 php artisan migrate
 ```
+
+Instrução executada pelo PHP para dar o retorno (bool(true))
+```
+
+php -r "var_dump(extension_loaded('pdo_mysql'));"
+```
