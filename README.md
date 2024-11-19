@@ -178,3 +178,9 @@ Cria as tabelas no BD
 
 php artisan migrate
 ```
+
+Criando uma Migration
+```
+
+php artisan make:migration create_fornecedores_table
+```
