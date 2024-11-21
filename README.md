@@ -184,3 +184,15 @@ Criando uma Migration
 
 php artisan make:migration create_fornecedores_table
 ```
+
+Reverter as migrações
+```
+
+php artisan migrate:rollback
+```
+
+Reverter as migrações com uma quantidade de passos determinado
+```
+
+php artisan migrate:rollback --step=2
+```
