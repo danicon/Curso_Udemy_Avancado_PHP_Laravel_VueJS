@@ -220,3 +220,8 @@ Faz o Drop de todos os objetos do BD + migrate para recriar os objetos
 
 php artisan migrate:fresh
 ```
+
+Console interativo para manipular as classes relativas aos Models e testar o Eloquent ORM (Mapeamento Objeto Relacional) - shell PHP
+```
+php artisan tinker
+```
