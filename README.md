@@ -196,3 +196,27 @@ Reverter as migrações com uma quantidade de passos determinado
 
 php artisan migrate:rollback --step=2
 ```
+
+Atalho das listagem da migrations já foram executadas
+```
+
+php artisan migrate:status
+```
+
+Executa o rollback de todas as migrations
+```
+
+php artisan migrate:reset
+```
+
+Executa o rollback de todas as migrations + o migrate para recriar os objetos
+```
+
+php artisan migrate:refresh
+```
+
+Faz o Drop de todos os objetos do BD + migrate para recriar os objetos
+```
+
+php artisan migrate:fresh
+```
