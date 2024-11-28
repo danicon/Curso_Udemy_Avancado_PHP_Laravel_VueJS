@@ -225,3 +225,39 @@ Console interativo para manipular as classes relativas aos Models e testar o Elo
 ```
 php artisan tinker
 ```
+
+Usando o Shell do Tinker
+```
+
+> $contato = new \App\Models\SiteContato();                                                                           
+= App\Models\SiteContato {#5181}
+
+> $contato->nome = 'Jorge';                                                                                           
+= "Jorge"
+
+> $contato->telefone = '(11) 99123-4567';                                                                             
+= "(11) 99123-4567"
+
+> $contato->email = 'jorge@contato.com.br';                                                                           
+= "jorge@contato.com.br"
+
+> $contato->motivo_contato = 1;                                                                                       
+= 1
+
+> $contato->mensagem = 'Olá, gostaria de mais detalhes sobre o super gestão';                                         
+= "Olá, gostaria de mais detalhes sobre o super gestão"
+
+> print_r($contato->getAttributes());                                                                                 
+Array
+(
+    [nome] => Jorge
+    [telefone] => (11) 99123-4567
+    [email] => jorge@contato.com.br
+    [motivo_contato] => 1
+    [mensagem] => Olá, gostaria de mais detalhes sobre o super gestão
+)
+= true
+
+> $contato->save();                                                                                                   
+= true
+```                                  
