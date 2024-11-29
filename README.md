@@ -260,4 +260,20 @@ Array
 
 > $contato->save();                                                                                                   
 = true
-```                                  
+```   
+
+Eloquent - Inserindo registros com Create e Fillable
+```
+
+> \App\Models\Fornecedor::create(['nome' => 'Fornecedor ABC', 'site' => 'fornecedorabc.com.br', 'uf' => 'SP', 'email' => 'c
+ontato@fornecedorabc.com.br'])                                                                                             
+= App\Models\Fornecedor {#5198
+    nome: "Fornecedor ABC",
+    site: "fornecedorabc.com.br",
+    uf: "SP",
+    email: "contato@fornecedorabc.com.br",
+    updated_at: "2024-11-29 22:00:59",
+    created_at: "2024-11-29 22:00:59",
+    id: 2,
+  }
+```
