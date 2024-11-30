@@ -280,6 +280,7 @@ ontato@fornecedorabc.com.br'])
 
 Eloquent - Selecionando registros com all()
 ```
+
 $fornecedores = \App\Models\Fornecedo::all();
 
 > use \App\Models\Fornecedor;                                                                                  
@@ -289,4 +290,14 @@ $fornecedores = \App\Models\Fornecedo::all();
 > print_r($fornecedores->toArray()); 
 
 > foreach($fornecedores as $f) {echo $f->nome; echo ' - ';}    
+```
+
+Eloquent - Selecionando registros com find()
+```
+
+$fornecedores2 = Fornecedor::find(2);
+
+echo $fornecedores2->nome;
+
+$fornecedores2 = Fornecedor::find([1, 2]); 
 ```
