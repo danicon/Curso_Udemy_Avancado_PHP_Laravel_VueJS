@@ -277,3 +277,16 @@ ontato@fornecedorabc.com.br'])
     id: 2,
   }
 ```
+
+Eloquent - Selecionando registros com all()
+```
+$fornecedores = \App\Models\Fornecedo::all();
+
+> use \App\Models\Fornecedor;                                                                                  
+
+> $fornecedores = Fornecedor::all();   
+
+> print_r($fornecedores->toArray()); 
+
+> foreach($fornecedores as $f) {echo $f->nome; echo ' - ';}    
+```
