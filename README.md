@@ -301,3 +301,27 @@ echo $fornecedores2->nome;
 
 $fornecedores2 = Fornecedor::find([1, 2]); 
 ```
+
+Eloquent - Selecionando registros com where()
+```
+
+> use \App\Models\SiteContato;                                                                                 
+> $contato = SiteContato::where('id', '>', 1);                                                                 
+= Illuminate\Database\Eloquent\Builder {#5197}
+
+> $contato = SiteContato::where('id', '>', 1)->get();                                                          
+= Illuminate\Database\Eloquent\Collection {#5189
+    all: [
+      App\Models\SiteContato {#5187
+        id: 2,
+        created_at: "2024-11-28 21:32:13",
+        updated_at: "2024-11-28 21:32:13",
+        nome: "Maria",
+        telefone: "(11) 93333-4444",
+        email: "maria@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Estou gostando muito do Super Gestão",
+      },
+    ],
+  }
+```
