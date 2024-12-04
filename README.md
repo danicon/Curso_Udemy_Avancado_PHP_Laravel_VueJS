@@ -429,3 +429,103 @@ Eloquent - Selecionando registros com whereIn() - Por Diferença
     ],
   }
 ```
+
+Eloquent - Selecionando registros com whereBetween() - Entre
+```
+
+> $contatos = SiteContato::whereBetween('id', [3, 6])->get();                                                   
+= Illuminate\Database\Eloquent\Collection {#6177
+    all: [
+      App\Models\SiteContato {#6178
+        id: 3,
+        created_at: null,
+        updated_at: null,
+        nome: "João",
+        telefone: "(88) 91111-2222",
+        email: "joao@contato.com.br",
+        motivo_contato: 3,
+        mensagem: "É muito difícil localizar a opção de listar todos os produtos",
+      },
+      App\Models\SiteContato {#6179
+        id: 4,
+        created_at: null,
+        updated_at: null,
+        nome: "Rosa",
+        telefone: "(33) 92222-3333",
+        email: "rosa@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Quando custa essa aplicação?",
+      },
+      App\Models\SiteContato {#6180
+        id: 5,
+        created_at: null,
+        updated_at: null,
+        nome: "Fernando",
+        telefone: "(11) 94444-5555",
+        email: "fernando@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Como consigo criar multiplos usuários para minha empresa?",
+      },
+      App\Models\SiteContato {#5192
+        id: 6,
+        created_at: null,
+        updated_at: null,
+        nome: "André",
+        telefone: "(88) 95555-6666",
+        email: "andre@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Parabéns pela ferramenta, estou obtendo ótimos resultados!",
+      },
+    ],
+  }
+```
+
+Eloquent - Selecionando registros com whereBetween() - Não entre
+```
+
+> $contatos = SiteContato::whereNotBetween('id', [3, 6])->get();                                                
+= Illuminate\Database\Eloquent\Collection {#6189
+    all: [
+      App\Models\SiteContato {#6165
+        id: 1,
+        created_at: "2024-11-28 21:28:49",
+        updated_at: "2024-11-28 21:28:49",
+        nome: "Jorge",
+        telefone: "(11) 99123-4567",
+        email: "jorge@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Olá, gostaria de mais detalhes sobre o super gestão",
+      },
+      App\Models\SiteContato {#6191
+        id: 2,
+        created_at: "2024-11-28 21:32:13",
+        updated_at: "2024-11-28 21:32:13",
+        nome: "Maria",
+        telefone: "(11) 93333-4444",
+        email: "maria@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Estou gostando muito do Super Gestão",
+      },
+      App\Models\SiteContato {#6192
+        id: 7,
+        created_at: null,
+        updated_at: null,
+        nome: "Ana",
+        telefone: "(33) 96666-7777",
+        email: "ana@contato.com.br",
+        motivo_contato: 3,
+        mensagem: "Não gostei muito das cores, consigo mudar de tema?",
+      },
+      App\Models\SiteContato {#5200
+        id: 8,
+        created_at: null,
+        updated_at: null,
+        nome: "Helena",
+        telefone: "(11) 97777-8888",
+        email: "helena@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Consigo controlar toda a minha empresa de modo fácil e prático.",
+      },
+    ],
+  }
+```
