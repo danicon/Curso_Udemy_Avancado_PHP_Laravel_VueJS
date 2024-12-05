@@ -529,3 +529,35 @@ Eloquent - Selecionando registros com whereBetween() - Não entre
     ],
   }
 ```
+
+Eloquent - Selecionando registros com dois ou mais Wheres
+```
+
+> use \App\Models\SiteContato;                                                                                     
+> $contatos = SiteContato::where('nome', '<>', 'Fernando')->whereIn('motivo_contato', [1,2])->whereBetween('created
+_at', ['2024-11-01 00:00:00', '2024-11-30 23:59:59'])->get();                                                      
+= Illuminate\Database\Eloquent\Collection {#5559
+    all: [
+      App\Models\SiteContato {#5918
+        id: 1,
+        created_at: "2024-11-28 21:28:49",
+        updated_at: "2024-11-28 21:28:49",
+        nome: "Jorge",
+        telefone: "(11) 99123-4567",
+        email: "jorge@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Olá, gostaria de mais detalhes sobre o super gestão",
+      },
+      App\Models\SiteContato {#6183
+        id: 2,
+        created_at: "2024-11-28 21:32:13",
+        updated_at: "2024-11-28 21:32:13",
+        nome: "Maria",
+        telefone: "(11) 93333-4444",
+        email: "maria@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Estou gostando muito do Super Gestão",
+      },
+    ],
+  }
+```
