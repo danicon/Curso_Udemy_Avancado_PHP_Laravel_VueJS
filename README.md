@@ -752,3 +752,144 @@ Eloquent - Selecionando registros com whereNotNull()
     ],
   }
 ```
+
+Eloquent - Selecionando registros com base em parâmetros do tipo data
+```
+
+> use App\Models\SiteContato;                                                                                       
+> $contatos = SiteContato::whereDate('created_at', '2024-11-28')->get();                                            
+= Illuminate\Database\Eloquent\Collection {#5940
+    all: [
+      App\Models\SiteContato {#5531
+        id: 1,
+        created_at: "2024-11-28 21:28:49",
+        updated_at: "2024-11-28 21:28:49",
+        nome: "Jorge",
+        telefone: "(11) 99123-4567",
+        email: "jorge@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Olá, gostaria de mais detalhes sobre o super gestão",
+      },
+      App\Models\SiteContato {#6155
+        id: 2,
+        created_at: "2024-11-28 21:32:13",
+        updated_at: "2024-11-28 21:32:13",
+        nome: "Maria",
+        telefone: "(11) 93333-4444",
+        email: "maria@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Estou gostando muito do Super Gestão",
+      },
+    ],
+  }
+```
+
+Eloquent - Selecionando registros com base em parâmetros do tipo dia
+```
+
+> $contatos = SiteContato::whereDay('created_at', '28')->get();                                                     
+= Illuminate\Database\Eloquent\Collection {#5190
+    all: [
+      App\Models\SiteContato {#5191
+        id: 1,
+        created_at: "2024-11-28 21:28:49",
+        updated_at: "2024-11-28 21:28:49",
+        nome: "Jorge",
+        telefone: "(11) 99123-4567",
+        email: "jorge@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Olá, gostaria de mais detalhes sobre o super gestão",
+      },
+      App\Models\SiteContato {#5182
+        id: 2,
+        created_at: "2024-11-28 21:32:13",
+        updated_at: "2024-11-28 21:32:13",
+        nome: "Maria",
+        telefone: "(11) 93333-4444",
+        email: "maria@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Estou gostando muito do Super Gestão",
+      },
+    ],
+  }
+```
+
+Eloquent - Selecionando registros com base em parâmetros do tipo mês
+```
+
+> $contatos = SiteContato::whereMonth('created_at', '11')->get();                                                   
+= Illuminate\Database\Eloquent\Collection {#6169
+    all: [
+      App\Models\SiteContato {#6170
+        id: 1,
+        created_at: "2024-11-28 21:28:49",
+        updated_at: "2024-11-28 21:28:49",
+        nome: "Jorge",
+        telefone: "(11) 99123-4567",
+        email: "jorge@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Olá, gostaria de mais detalhes sobre o super gestão",
+      },
+      App\Models\SiteContato {#1291
+        id: 2,
+        created_at: "2024-11-28 21:32:13",
+        updated_at: "2024-11-28 21:32:13",
+        nome: "Maria",
+        telefone: "(11) 93333-4444",
+        email: "maria@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Estou gostando muito do Super Gestão",
+      },
+    ],
+  }
+```
+
+Eloquent - Selecionando registros com base em parâmetros do tipo ano
+```
+
+> $contatos = SiteContato::whereYear('created_at', '2024')->get();                                                  
+= Illuminate\Database\Eloquent\Collection {#5178
+    all: [
+      App\Models\SiteContato {#5177
+        id: 1,
+        created_at: "2024-11-28 21:28:49",
+        updated_at: "2024-11-28 21:28:49",
+        nome: "Jorge",
+        telefone: "(11) 99123-4567",
+        email: "jorge@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Olá, gostaria de mais detalhes sobre o super gestão",
+      },
+      App\Models\SiteContato {#5186
+        id: 2,
+        created_at: "2024-11-28 21:32:13",
+        updated_at: "2024-11-28 21:32:13",
+        nome: "Maria",
+        telefone: "(11) 93333-4444",
+        email: "maria@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Estou gostando muito do Super Gestão",
+      },
+    ],
+  }
+```
+
+Eloquent - Selecionando registros com base em parâmetros do tipo hora
+```
+
+> $contatos = SiteContato::whereTime('created_at', '=', '21:32:13')->get();                                         
+= Illuminate\Database\Eloquent\Collection {#6185
+    all: [
+      App\Models\SiteContato {#6183
+        id: 2,
+        created_at: "2024-11-28 21:32:13",
+        updated_at: "2024-11-28 21:32:13",
+        nome: "Maria",
+        telefone: "(11) 93333-4444",
+        email: "maria@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Estou gostando muito do Super Gestão",
+      },
+    ],
+  }
+```
