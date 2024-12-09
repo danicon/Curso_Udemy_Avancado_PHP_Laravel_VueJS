@@ -893,3 +893,34 @@ Eloquent - Selecionando registros com base em parâmetros do tipo hora
     ],
   }
 ```
+
+Eloquent - Selecionando registros com whereColumn()
+```
+
+> use App\Models\SiteContato;                                                                                 
+> $contato = SiteContato::whereColumn('created_at', '=', 'updated_at')->get();                                     
+= Illuminate\Database\Eloquent\Collection {#5890
+    all: [
+      App\Models\SiteContato {#5940
+        id: 1,
+        created_at: "2024-11-28 21:28:49",
+        updated_at: "2024-11-28 21:28:49",
+        nome: "Jorge",
+        telefone: "(11) 99123-4567",
+        email: "jorge@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Olá, gostaria de mais detalhes sobre o super gestão",
+      },
+      App\Models\SiteContato {#6155
+        id: 2,
+        created_at: "2024-11-28 21:32:13",
+        updated_at: "2024-11-28 21:32:13",
+        nome: "Maria",
+        telefone: "(11) 93333-4444",
+        email: "maria@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Estou gostando muito do Super Gestão",
+      },
+    ],
+  }
+```
