@@ -924,3 +924,25 @@ Eloquent - Selecionando registros com whereColumn()
     ],
   }
 ```
+
+Eloquent - Selecionando registros aplicando precedência em operações lógicas
+```
+
+> use App\Models\SiteContato;                                                                                   
+> $contatos = SiteContato::where(function($query){ $query->where('nome', 'Jorge')->orWhere('nome', 'Ana'); })->w
+here(function($query){ $query->whereIn('motivo_contato', [1,2])->orWhereBetween('id', [4,6]); })->get();        
+= Illuminate\Database\Eloquent\Collection {#6003
+    all: [
+      App\Models\SiteContato {#6218
+        id: 1,
+        created_at: "2024-11-28 21:28:49",
+        updated_at: "2024-11-28 21:28:49",
+        nome: "Jorge",
+        telefone: "(11) 99123-4567",
+        email: "jorge@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Olá, gostaria de mais detalhes sobre o super gestão",
+      },
+    ],
+  }
+```
