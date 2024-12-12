@@ -1041,3 +1041,98 @@ Eloquent - Ordenando registros (asc ou desc)
     ],
   }
 ```
+
+Eloquent - Collection first
+```
+
+> $contatos = SiteContato::where('id', '>', 3)->get(); 
+> $contatos->first();                                                                                          
+= App\Models\SiteContato {#6187
+    id: 4,
+    created_at: null,
+    updated_at: null,
+    nome: "Rosa",
+    telefone: "(33) 92222-3333",
+    email: "rosa@contato.com.br",
+    motivo_contato: 1,
+    mensagem: "Quando custa essa aplicação?",
+  }
+```
+
+Eloquent - Collection last
+```
+
+> $contatos = SiteContato::where('id', '>', 3)->get(); 
+> $contatos->last();                                                                                           
+= App\Models\SiteContato {#6188
+    id: 8,
+    created_at: null,
+    updated_at: null,
+    nome: "Helena",
+    telefone: "(11) 97777-8888",
+    email: "helena@contato.com.br",
+    motivo_contato: 2,
+    mensagem: "Consigo controlar toda a minha empresa de modo fácil e prático.",
+  }
+```
+
+Eloquent - Collection reverse
+```
+
+> $contatos = SiteContato::where('id', '>', 3)->get(); 
+> $contatos->reverse();                                                                                        
+= Illuminate\Database\Eloquent\Collection {#6152
+    all: [
+      4 => App\Models\SiteContato {#6188
+        id: 8,
+        created_at: null,
+        updated_at: null,
+        nome: "Helena",
+        telefone: "(11) 97777-8888",
+        email: "helena@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Consigo controlar toda a minha empresa de modo fácil e prático.",
+      },
+      3 => App\Models\SiteContato {#5933
+        id: 7,
+        created_at: null,
+        updated_at: null,
+        nome: "Ana",
+        telefone: "(33) 96666-7777",
+        email: "ana@contato.com.br",
+        motivo_contato: 3,
+        mensagem: "Não gostei muito das cores, consigo mudar de tema?",
+      },
+      2 => App\Models\SiteContato {#6186
+        id: 6,
+        created_at: null,
+        updated_at: null,
+        nome: "André",
+        telefone: "(88) 95555-6666",
+        email: "andre@contato.com.br",
+        motivo_contato: 2,
+        mensagem: "Parabéns pela ferramenta, estou obtendo ótimos resultados!",
+      },
+      1 => App\Models\SiteContato {#5186
+        id: 5,
+        created_at: null,
+        updated_at: null,
+        nome: "Fernando",
+        telefone: "(11) 94444-5555",
+        email: "fernando@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Como consigo criar multiplos usuários para minha empresa?",
+      },
+      0 => App\Models\SiteContato {#6187
+        id: 4,
+        created_at: null,
+        updated_at: null,
+        nome: "Rosa",
+        telefone: "(33) 92222-3333",
+        email: "rosa@contato.com.br",
+        motivo_contato: 1,
+        mensagem: "Quando custa essa aplicação?",
+      },
+    ],
+  }
+```
