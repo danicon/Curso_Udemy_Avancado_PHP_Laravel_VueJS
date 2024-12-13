@@ -1231,3 +1231,39 @@ Eloquent - Collection toJson
 > SiteContato::all()->toJson();                                                                                  
 = "[{"id":1,"created_at":"2024-11-28T21:28:49.000000Z","updated_at":"2024-11-28T21:28:49.000000Z","nome":"Jorge","telefone":"(11) 99123-4567","email":"jorge@contato.com.br","motivo_contato":1,"mensagem":"Ol\u00e1, gostaria de mais detalhes sobre o super gest\u00e3o"},{"id":2,"created_at":"2024-11-28T21:32:13.000000Z","updated_at":"2024-11-28T23:32:13.000000Z","nome":"Maria","telefone":"(11) 93333-4444","email":"maria@contato.com.br","motivo_contato":2,"mensagem":"Estou gostando muito do Super Gest\u00e3o"},{"id":3,"created_at":null,"updated_at":null,"nome":"Jo\u00e3o","telefone":"(88) 91111-2222","email":"joao@contato.com.br","motivo_contato":3,"mensagem":"\u00c9 muito dif\u00edcil localizar a op\u00e7\u00e3o de listar todos os produtos"},{"id":4,"created_at":null,"updated_at":null,"nome":"Rosa","telefone":"(33) 92222-3333","email":"rosa@contato.com.br","motivo_contato":1,"mensagem":"Quando custa essa aplica\u00e7\u00e3o?"},{"id":5,"created_at":null,"updated_at":null,"nome":"Fernando","telefone":"(11) 94444-5555","email":"fernando@contato.com.br","motivo_contato":1,"mensagem":"Como consigo criar multiplos usu\u00e1rios para minha empresa?"},{"id":6,"created_at":null,"updated_at":null,"nome":"Andr\u00e9","telefone":"(88) 95555-6666","email":"andre@contato.com.br","motivo_contato":2,"mensagem":"Parab\u00e9ns pela ferramenta, estou obtendo \u00f3timos resultados!"},{"id":7,"created_at":null,"updated_at":null,"nome":"Ana","telefone":"(33) 96666-7777","email":"ana@contato.com.br","motivo_contato":3,"mensagem":"N\u00e3o gostei muito das cores, consigo mudar de tema?"},{"id":8,"created_at":null,"updated_at":null,"nome":"Helena","telefone":"(11) 97777-8888","email":"helena@contato.com.br","motivo_contato":2,"mensagem":"Consigo controlar toda a minha empresa de modo f\u00e1cil e pr\u00e1tico."}]"
 ```
+
+Eloquent - Collection pluck (coletar seja recuperar todos e apeans os email da collections)
+```
+
+> SiteContato::all()->pluck('email');                                                                            
+= Illuminate\Support\Collection {#6155
+    all: [
+      "jorge@contato.com.br",
+      "maria@contato.com.br",
+      "joao@contato.com.br",
+      "rosa@contato.com.br",
+      "fernando@contato.com.br",
+      "andre@contato.com.br",
+      "ana@contato.com.br",
+      "helena@contato.com.br",
+    ],
+  }
+```
+
+Eloquent - Collection pluck (coletar seja recuperar todos e apeans os email da collections com indice)
+```
+
+> SiteContato::all()->pluck('email', 'nome');                                                                    
+= Illuminate\Support\Collection {#5519
+    all: [
+      "Jorge" => "jorge@contato.com.br",
+      "Maria" => "maria@contato.com.br",
+      "João" => "joao@contato.com.br",
+      "Rosa" => "rosa@contato.com.br",
+      "Fernando" => "fernando@contato.com.br",
+      "André" => "andre@contato.com.br",
+      "Ana" => "ana@contato.com.br",
+      "Helena" => "helena@contato.com.br",
+    ],
+  }
+```
