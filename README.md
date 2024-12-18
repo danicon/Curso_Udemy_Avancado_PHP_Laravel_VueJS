@@ -1267,3 +1267,199 @@ Eloquent - Collection pluck (coletar seja recuperar todos e apeans os email da c
     ],
   }
 ```
+
+Eloquent - Atualizando registros (save)
+```
+
+> use \App\Models\Fornecedor;                                                                                   
+> $fornecedor = Fornecedor::find(1);                                                                            
+= App\Models\Fornecedor {#5190
+    id: 1,
+    nome: "Fornecedore XYZ",
+    site: "fornecedorxyz.com.br",
+    created_at: "2024-11-29 21:46:22",
+    updated_at: "2024-11-29 21:46:22",
+    uf: "SP",
+    email: "contato@fornecedorxyz.com.br",
+  }
+
+> $fornecedor->nome = 'Fornecedor 123';                                                                         
+= "Fornecedor 123"
+
+> $fornecedor->site = 'fornecedor123.com.br';                                                                   
+= "fornecedor123.com.br"
+
+> $fornecedor->email = 'contato@fornecedo123.com.br';                                                           
+= "contato@fornecedo123.com.br"
+
+> print_r($fornecedor);                                                                                         
+App\Models\Fornecedor Object
+(
+    [connection:protected] => mysql
+    [table:protected] => fornecedores
+    [primaryKey:protected] => id
+    [keyType:protected] => int
+    [incrementing] => 1
+    [with:protected] => Array
+        (
+        )
+
+    [withCount:protected] => Array
+        (
+        )
+
+    [preventsLazyLoading] =>
+    [perPage:protected] => 15
+    [exists] => 1
+    [wasRecentlyCreated] =>
+    [escapeWhenCastingToString:protected] =>
+    [attributes:protected] => Array
+        (
+            [id] => 1
+            [nome] => Fornecedor 123
+            [site] => fornecedor123.com.br
+            [created_at] => 2024-11-29 21:46:22
+            [updated_at] => 2024-11-29 21:46:22
+            [uf] => SP
+            [email] => contato@fornecedo123.com.br
+        )
+
+    [original:protected] => Array
+        (
+            [id] => 1
+            [nome] => Fornecedore XYZ
+            [site] => fornecedorxyz.com.br
+            [created_at] => 2024-11-29 21:46:22
+            [updated_at] => 2024-11-29 21:46:22
+            [uf] => SP
+            [email] => contato@fornecedorxyz.com.br
+        )
+
+    [changes:protected] => Array
+        (
+        )
+
+    [casts:protected] => Array
+        (
+        )
+
+    [classCastCache:protected] => Array
+        (
+        )
+
+    [attributeCastCache:protected] => Array
+        (
+        )
+
+    [dateFormat:protected] =>
+    [appends:protected] => Array
+        (
+        )
+
+    [dispatchesEvents:protected] => Array
+        (
+        )
+
+    [observables:protected] => Array
+        (
+        )
+
+    [relations:protected] => Array
+        (
+        )
+
+    [touches:protected] => Array
+        (
+        )
+
+    [timestamps] => 1
+    [usesUniqueIds] =>
+    [hidden:protected] => Array
+        (
+        )
+
+    [visible:protected] => Array
+        (
+        )
+
+    [fillable:protected] => Array
+        (
+            [0] => nome
+            [1] => site
+            [2] => uf
+            [3] => email
+        )
+
+    [guarded:protected] => Array
+        (
+            [0] => *
+        )
+
+)
+= true
+
+> $fornecedor->save();                                                                                          
+= true
+```
+
+Eloquent - Atualizando registros (fill e save)
+```
+
+> $fornecedores2 = Fornecedor::find(2);                                                                         
+= App\Models\Fornecedor {#5169
+    id: 2,
+    nome: "Fornecedor ABC",
+    site: "fornecedorabc.com.br",
+    created_at: "2024-11-29 22:00:59",
+    updated_at: "2024-11-29 22:00:59",
+    uf: "SP",
+    email: "contato@fornecedorabc.com.br",
+  }
+
+> $fornecedores2->fill(['nome' => 'Fornecedor 789', 'site' => 'fornecedor789.com.br', 'email' => 'contato@fornec
+edor789.com.br']);                                                                                              
+= App\Models\Fornecedor {#5169
+    id: 2,
+    nome: "Fornecedor 789",
+    site: "fornecedor789.com.br",
+    created_at: "2024-11-29 22:00:59",
+    updated_at: "2024-11-29 22:00:59",
+    uf: "SP",
+    email: "contato@fornecedor789.com.br",
+  }
+
+> $fornecedores2->save();                                                                                       
+= true
+```
+
+Eloquent - Atualizando registros (where e update)
+```
+
+> use \App\Models\Fornecedor;                                                                                       
+> Fornecedor::whereIn('id', [1,2])->get();                                                                          
+= Illuminate\Database\Eloquent\Collection {#5195
+    all: [
+      App\Models\Fornecedor {#5165
+        id: 1,
+        nome: "Fornecedor 123",
+        site: "fornecedor123.com.br",
+        created_at: "2024-11-29 21:46:22",
+        updated_at: "2024-12-16 21:49:55",
+        uf: "SP",
+        email: "contato@fornecedo123.com.br",
+      },
+      App\Models\Fornecedor {#5167
+        id: 2,
+        nome: "Fornecedor 789",
+        site: "fornecedor789.com.br",
+        created_at: "2024-11-29 22:00:59",
+        updated_at: "2024-12-16 21:55:28",
+        uf: "SP",
+        email: "contato@fornecedor789.com.br",
+      },
+    ],
+  }
+
+> Fornecedor::whereIn('id', [1,2])->update(['nome' => 'Fornecedor Teste', 'site' => 'teste.com.br']);               
+= 2
+```
