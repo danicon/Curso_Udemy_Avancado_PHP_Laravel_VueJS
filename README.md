@@ -1463,3 +1463,36 @@ Eloquent - Atualizando registros (where e update)
 > Fornecedor::whereIn('id', [1,2])->update(['nome' => 'Fornecedor Teste', 'site' => 'teste.com.br']);               
 = 2
 ```
+
+Eloquent - Deletando registros (delete)
+```
+
+> $contato = SiteContato::find(4);                                                                                  
+= App\Models\SiteContato {#5998
+    id: 4,
+    created_at: null,
+    updated_at: null,
+    nome: "Rosa",
+    telefone: "(33) 92222-3333",
+    email: "rosa@contato.com.br",
+    motivo_contato: 1,
+    mensagem: "Quando custa essa aplicação?",
+  }
+
+> $contato->delete();                                                                                               
+= true
+```
+
+Eloquent - Deletando registros (delete)
+```
+
+> SiteContato::where('id', 7)->delete();                                                                            
+= 1
+```
+
+Eloquent - Deletando registros (destroy)
+```
+
+> SiteContato::destroy(5);                                                                                          
+= 1
+```
