@@ -1496,3 +1496,46 @@ Eloquent - Deletando registros (destroy)
 > SiteContato::destroy(5);                                                                                          
 = 1
 ```
+
+Eloquent - Deletando registros com SoftDelete (Necessario criar uma coluna na tabela SoftDelete - deleted_at)
+```
+
+> use \App\Models\Fornecedor;                                                                                    
+> $fornecedor = Fornecedor::find(2);                                                                             
+= App\Models\Fornecedor {#5206
+    id: 2,
+    nome: "Fornecedor Teste",
+    site: "teste.com.br",
+    created_at: "2024-11-29 22:00:59",
+    updated_at: "2024-12-18 21:28:31",
+    uf: "SP",
+    email: "contato@fornecedor789.com.br",
+    deleted_at: null,
+  }
+
+> $fornecedor->delete();                                                                                         
+= true
+
+> Fornecedor::all();                                                                                             
+= Illuminate\Database\Eloquent\Collection {#5201
+    all: [
+      App\Models\Fornecedor {#5198
+        id: 1,
+        nome: "Fornecedor Teste",
+        site: "teste.com.br",
+        created_at: "2024-11-29 21:46:22",
+        updated_at: "2024-12-18 21:28:31",
+        uf: "SP",
+        email: "contato@fornecedo123.com.br",
+        deleted_at: null,
+      },
+    ],
+  }
+```
+
+Eloquent - Remoção Forçada (mesmo com SoftDelete)
+```
+
+> $fornecedor->forceDelete();                                                                                    
+= true
+```
