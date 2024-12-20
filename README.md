@@ -1539,3 +1539,86 @@ Eloquent - Remoção Forçada (mesmo com SoftDelete)
 > $fornecedor->forceDelete();                                                                                    
 = true
 ```
+
+Eloquent - Selecionando registros deletados e não deletados com SoftDelete
+```
+
+> Fornecedor::withTrashed()->get();
+= Illuminate\Database\Eloquent\Collection {#5315                                                            
+    all: [
+      App\Models\Fornecedor {#5314
+        id: 1,
+        nome: "Fornecedor Teste",
+        site: "teste.com.br",
+        created_at: "2024-11-29 21:46:22",
+        updated_at: "2024-12-20 21:26:52",
+        uf: "SP",
+        email: "contato@fornecedo123.com.br",
+        deleted_at: "2024-12-20 21:26:52",
+      },
+      App\Models\Fornecedor {#5313
+        id: 3,
+        nome: "Fornecedor 1",
+        site: "fornecedor1.com.br",
+        created_at: "2024-12-20 21:30:27",
+        updated_at: "2024-12-20 21:30:27",
+        uf: "SP",
+        email: "contato@fornecedo1.com.br",
+        deleted_at: null,
+      },
+    ],
+  }
+```
+
+Eloquent - Selecionando apenas registros deletados com SoftDelete
+```
+
+> Fornecedor::onlyTrashed()->get();                                                                         
+= Illuminate\Database\Eloquent\Collection {#5245
+    all: [
+      App\Models\Fornecedor {#5244
+        id: 1,
+        nome: "Fornecedor Teste",
+        site: "teste.com.br",
+        created_at: "2024-11-29 21:46:22",
+        updated_at: "2024-12-20 21:26:52",
+        uf: "SP",
+        email: "contato@fornecedo123.com.br",
+        deleted_at: "2024-12-20 21:26:52",
+      },
+    ],
+  }
+```
+
+Eloquent - Restaurando registros deletados com SoftDelete
+```
+
+> $fornecedores = Fornecedor::withTrashed()->get();                                                         
+= Illuminate\Database\Eloquent\Collection {#5241
+    all: [
+      App\Models\Fornecedor {#5240
+        id: 1,
+        nome: "Fornecedor Teste",
+        site: "teste.com.br",
+        created_at: "2024-11-29 21:46:22",
+        updated_at: "2024-12-20 21:26:52",
+        uf: "SP",
+        email: "contato@fornecedo123.com.br",
+        deleted_at: "2024-12-20 21:26:52",
+      },
+      App\Models\Fornecedor {#5239
+        id: 3,
+        nome: "Fornecedor 1",
+        site: "fornecedor1.com.br",
+        created_at: "2024-12-20 21:30:27",
+        updated_at: "2024-12-20 21:30:27",
+        uf: "SP",
+        email: "contato@fornecedo1.com.br",
+        deleted_at: null,
+      },
+    ],
+  }
+
+> $fornecedores[0]->restore();                                                                              
+= true
+```
