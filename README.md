@@ -1622,3 +1622,15 @@ Eloquent - Restaurando registros deletados com SoftDelete
 > $fornecedores[0]->restore();                                                                              
 = true
 ```
+
+Criar uma classe semente (Seeders)
+```
+
+php artisan make:seeder FornecedorSeeder
+```
+
+Executando o seeders 
+```
+
+php artisan db:seed
+```
