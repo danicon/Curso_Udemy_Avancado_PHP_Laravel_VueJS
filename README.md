@@ -1629,8 +1629,14 @@ Criar uma classe semente (Seeders)
 php artisan make:seeder FornecedorSeeder
 ```
 
-Executando o seeders 
+Executando o seeders (Todos as classes seeders srão executados)
 ```
 
 php artisan db:seed
+```
+
+Executando o seeders (Executar apenas uma classe seeder especifica)
+```
+
+php artisan db:seed --class=SiteContatoSeeder
 ```
