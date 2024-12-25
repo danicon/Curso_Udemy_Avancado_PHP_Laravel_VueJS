@@ -1640,3 +1640,10 @@ Executando o seeders (Executar apenas uma classe seeder especifica)
 
 php artisan db:seed --class=SiteContatoSeeder
 ```
+
+Factories (semeando tabelas em massa com a dependência Faker)
+```
+
+php artisan make:factory SiteContatoFactory --model=SiteContato
+```
+
