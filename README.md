@@ -1647,3 +1647,8 @@ Factories (semeando tabelas em massa com a dependência Faker)
 php artisan make:factory SiteContatoFactory --model=SiteContato
 ```
 
+Criando um Middleware
+```
+
+php artisan make:middleware LogAcessoMiddleware
+```
