@@ -1652,3 +1652,4 @@ Criando um Middleware
 
 php artisan make:middleware LogAcessoMiddleware
 ```
+
