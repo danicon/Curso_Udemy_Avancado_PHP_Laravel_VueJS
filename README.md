@@ -1653,3 +1653,8 @@ Criando um Middleware
 php artisan make:middleware LogAcessoMiddleware
 ```
 
+Listando as rotas do middleware
+```
+
+php artisan route:list -v
+```
