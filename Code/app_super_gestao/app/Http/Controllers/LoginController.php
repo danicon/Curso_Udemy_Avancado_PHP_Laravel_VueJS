@@ -64,7 +64,7 @@ class LoginController extends Controller
 
             // dd($_SESSION);
 
-            return redirect()->route('app.clientes');
+            return redirect()->route('app.home');
         } else {
             return  redirect()->route('site.login', ['erro' => 1]);
         }
@@ -73,5 +73,9 @@ class LoginController extends Controller
         // print_r($usuario);
         // echo '</pre>';
 
+    }
+
+    public function sair() {
+       echo 'sair';
     }
 }
