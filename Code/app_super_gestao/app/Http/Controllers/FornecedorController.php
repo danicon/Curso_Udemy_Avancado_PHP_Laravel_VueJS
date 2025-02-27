@@ -28,7 +28,8 @@ class FornecedorController extends Controller
 
         $msg = '';
 
-        if($request->input('_token') != '') {
+        //inclusão
+        if($request->input('_token') != '' && $request->input('id') == '') {
             //validação
             $regras = [
                 'nome' => 'required|min:3|max:40',
@@ -57,7 +58,29 @@ class FornecedorController extends Controller
             $msg = 'Cadastro realizado com sucesso';
         }
 
+        //edição
+        if($request->input('_token') != '' && $request->input('id') != '') {
+            $fornecedor = Fornecedor::find($request->input("id"));
+            $update = $fornecedor->update($request->all());
+
+            if($update) {
+                $msg = "Atualização realizado com sucesso";
+            } else {
+                $msg = "Erro ao tentar atualizar o registro";
+            }
+
+            return redirect()->route('app.fornecedor.editar', ['id' => $request->input("id"), 'msg' => $msg]);
+        }
+
         return view('app.fornecedor.adicionar', ['msg' => $msg]);
+    }
+
+    public function editar($id, $msg = '') {
+        // echo $id;
+        $fornecedor = Fornecedor::find($id);
+
+        // dd($fornecedor);
+        return view("app.fornecedor.adicionar", ['fornecedor' => $fornecedor, 'msg' => $msg]);
     }
 
 }
