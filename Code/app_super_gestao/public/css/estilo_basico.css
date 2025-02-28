@@ -205,3 +205,20 @@ span {
 .redes-sociais img {
     margin: 0px 15px 0px 15px;
 }
+
+span.relative.z-0.inline-flex.rtl\:flex-row-reverse.shadow-sm.rounded-md {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+span.relative.z-0.inline-flex.rtl\:flex-row-reverse.shadow-sm.rounded-md a,
+span.relative.inline-flex.items-center.px-4.py-2.-ml-px.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.cursor-default.leading-5.dark\:bg-gray-800.dark\:border-gray-600 {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+svg.w-5.h-5 {
+    width: 20px;
+}
