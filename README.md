@@ -1658,3 +1658,9 @@ Listando as rotas do middleware
 
 php artisan route:list -v
 ```
+
+Controladores com resources, cria metodos padronizados
+```
+
+php artisan make:controller --resource ProdutoController --model=Produto
+```
