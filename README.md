@@ -1664,3 +1664,9 @@ Controladores com resources, cria metodos padronizados
 
 php artisan make:controller --resource ProdutoController --model=Produto
 ```
+
+Listando as rotas
+```
+
+php artisan route:list
+```

@@ -12,7 +12,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //
+        echo "index";
     }
 
     /**
@@ -20,7 +20,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        echo "create";
     }
 
     /**
