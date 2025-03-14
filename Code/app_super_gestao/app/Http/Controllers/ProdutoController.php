@@ -31,8 +31,20 @@ class ProdutoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    { 
+        // $produto = new Produto;
+        // $nome = $request->get("nome");
+        // $descricao = $request->get("descricao");
+
+        // $nome = strtoupper($nome);
+
+        // $produto->nome = $nome;
+        // $produto->descricao = $descricao;
+
+        // $produto->save();
+
+        Produto::create($request->all());
+        return redirect()->route('produto.index');
     }
 
     /**
