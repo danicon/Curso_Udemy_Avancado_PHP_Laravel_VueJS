@@ -89,7 +89,12 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        // print_r($request->all()); //payload]
+        // echo '<br><br><br>';
+        // print_r($produto->getAttributes()); //instancia do objeto no estado anterior
+
+        $produto->update($request->all());
+        return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
 
     /**
