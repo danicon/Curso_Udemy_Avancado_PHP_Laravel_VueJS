@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProdutoDetalheController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -40,6 +41,9 @@ Route::middleware('autenticacao:padrao,visitante,p3,p4')->prefix('/app')->group(
 
     //produto
     Route::resource('produto', ProdutoController::class);
+
+    //produtos detalhes
+    Route::resource('produto-detalhe', ProdutoDetalheController::class);
 });
 
 Route::get('/teste/{p1}/{p2}', [TesteController::class, 'teste'])->name('teste');
