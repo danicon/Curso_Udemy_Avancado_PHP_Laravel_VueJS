@@ -12,36 +12,49 @@ jobs:
     steps:
       - name: Clonar repositório
         uses: actions/checkout@v3
-		
-	  - name: Verificar se o Secret está carregado
-		run: |
-		  echo "Tamanho da chave: ${#SSH_PRIVATE_KEY}"
-		env:
-		  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Verificar se o Secret está carregado
+        run: |
+          if [ -z "${SSH_PRIVATE_KEY}" ]; then
+            echo "Erro: A chave SSH não foi carregada!"
+            exit 1
+          else
+            echo "A chave SSH foi carregada com sucesso."
+          fi
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Configurar SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H 192.168.1.102 >> ~/.ssh/known_hosts
           ls -la ~/.ssh
-          cat ~/.ssh/id_ed25519
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Deploy no Windows Server
         run: |
           ssh cduser@192.168.1.102 'powershell -Command "& { 
-            Write-Output 'Iniciando deployment...';
+            Write-Output \"Iniciando deployment...\";
             cd C:\Users\cduser\Projeto;
+
+            Write-Output \"Fazendo git pull...\";
             git pull origin main;
-            if ($?) { Write-Output 'Git pull bem-sucedido'; }
+            if ($?) { Write-Output \"✔ Git pull bem-sucedido\" } else { Write-Output \"❌ Erro no git pull\"; exit 1 }
+
+            Write-Output \"Instalando dependências do Composer...\";
             composer install --no-interaction --prefer-dist;
-            if ($?) { Write-Output 'Instalação do Composer bem-sucedida'; }
+            if ($?) { Write-Output \"✔ Instalação do Composer bem-sucedida\" } else { Write-Output \"❌ Erro no Composer install\"; exit 1 }
+
+            Write-Output \"Executando migrations...\";
             php artisan migrate --force;
-            if ($?) { Write-Output 'Migração bem-sucedida'; }
+            if ($?) { Write-Output \"✔ Migração bem-sucedida\" } else { Write-Output \"❌ Erro nas migrations\"; exit 1 }
+
+            Write-Output \"Limpando e cacheando configurações...\";
             php artisan config:cache;
-            if ($?) { Write-Output 'Cache de configuração bem-sucedido'; }
-            Write-Output 'Deployment concluído.';
+            if ($?) { Write-Output \"✔ Cache de configuração bem-sucedido\" } else { Write-Output \"❌ Erro no cache de configuração\"; exit 1 }
+
+            Write-Output \"🎉 Deployment concluído com sucesso!\";
           }"'
