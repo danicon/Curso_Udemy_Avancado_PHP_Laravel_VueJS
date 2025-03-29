@@ -15,12 +15,7 @@ jobs:
 
       - name: Verificar se o Secret está carregado
         run: |
-          if [ -z "${SSH_PRIVATE_KEY}" ]; then
-            echo "Erro: A chave SSH não foi carregada!"
-            exit 1
-          else
-            echo "A chave SSH foi carregada com sucesso."
-          fi
+          echo "Tamanho da chave: ${#SSH_PRIVATE_KEY}"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
@@ -29,27 +24,27 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H 192.168.1.102 >> ~/.ssh/known_hosts
           ls -la ~/.ssh
+          cat ~/.ssh/id_ed25519  # Verifique se a chave foi salva corretamente
+          ssh-keyscan -H 192.168.1.102 >> ~/.ssh/known_hosts
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Testar conexão SSH manualmente
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no cduser@192.168.1.102 "echo 'Conexão SSH bem-sucedida!'"
-
+          ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.102 'echo "Conexão SSH bem-sucedida!"'
+        
       - name: Deploy no Windows Server
         run: |
           ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.102 'powershell -Command "& { 
-            Write-Output \"Iniciando deployment...\";
+            Write-Output 'Iniciando deployment...';
             cd C:\Users\cduser\Projeto;
             git pull origin main;
-            if ($?) { Write-Output \"Git pull bem-sucedido\"; }
+            if ($?) { Write-Output 'Git pull bem-sucedido'; }
             composer install --no-interaction --prefer-dist;
-            if ($?) { Write-Output \"Instalação do Composer bem-sucedida\"; }
+            if ($?) { Write-Output 'Instalação do Composer bem-sucedida'; }
             php artisan migrate --force;
-            if ($?) { Write-Output \"Migração bem-sucedida\"; }
+            if ($?) { Write-Output 'Migração bem-sucedida'; }
             php artisan config:cache;
-            if ($?) { Write-Output \"Cache de configuração bem-sucedido\"; }
-            Write-Output \"Deployment concluído.\";
-          }"'
+            if ($?) { Write-Output 'Cache de configuração bem-sucedido'; }
+            Write-Output 'Deployment concluído.';}'
