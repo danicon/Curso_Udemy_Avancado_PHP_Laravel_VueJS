@@ -1,4 +1,4 @@
-name: Deploy Laravel Windows 
+name: Deploy Laravel Windows
 
 on:
   push:
@@ -24,14 +24,20 @@ jobs:
           
       - name: Verificar Conexão SSH
         run: |
-          ssh -T cduser@192.168.1.102
+          ssh -v -T cduser@192.168.1.102
 
       - name: Deploy no Windows Server
         run: |
           ssh cduser@192.168.1.102 'powershell -Command "& { 
+            Write-Output 'Iniciando deployment...';
             cd C:\Users\cduser\Projeto;
             git pull origin main;
+            if ($?) { Write-Output 'Git pull bem-sucedido'; }
             composer install --no-interaction --prefer-dist;
+            if ($?) { Write-Output 'Instalação do Composer bem-sucedida'; }
             php artisan migrate --force;
+            if ($?) { Write-Output 'Migração bem-sucedida'; }
             php artisan config:cache;
+            if ($?) { Write-Output 'Cache de configuração bem-sucedido'; }
+            Write-Output 'Deployment concluído.';
           }"'
