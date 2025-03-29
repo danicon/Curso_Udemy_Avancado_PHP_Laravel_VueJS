@@ -1,4 +1,4 @@
-name: Deploy Laravel
+name: Deploy Laravel Windows
 
 on:
   push:
@@ -18,18 +18,14 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H meu-servidor.com >> ~/.ssh/known_hosts
+          ssh-keyscan -H 192.168.1.102 >> ~/.ssh/known_hosts
 
-      - name: Deploy no servidor
+      - name: Deploy no Windows Server
         run: |
-          ssh usuario@meu-servidor.com << 'EOF'
-            cd /var/www/seu-projeto
-            git pull origin main
-            composer install --no-interaction --prefer-dist --optimize-autoloader
-            php artisan migrate --force
-            php artisan cache:clear
-            php artisan config:cache
-            php artisan route:cache
-            php artisan queue:restart
-            exit
-          EOF
+          ssh danco@192.168.1.102 'powershell -Command "& { 
+            cd C:\Projeto;
+            git pull origin main;
+            composer install --no-interaction --prefer-dist;
+            php artisan migrate --force;
+            php artisan config:cache;
+          }"'
