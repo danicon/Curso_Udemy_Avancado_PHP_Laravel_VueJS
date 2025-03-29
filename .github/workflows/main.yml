@@ -16,8 +16,8 @@ jobs:
       - name: Configurar SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H 192.168.1.102 >> ~/.ssh/known_hosts
 
       - name: Deploy no Windows Server
@@ -28,4 +28,4 @@ jobs:
             composer install --no-interaction --prefer-dist;
             php artisan migrate --force;
             php artisan config:cache;
-          }"'
+          }"'		
