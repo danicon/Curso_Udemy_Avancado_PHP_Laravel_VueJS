@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Clonar repositório
         uses: actions/checkout@v3
+		
+	  - name: Verificar se o Secret está carregado
+		  run: echo "Tamanho da chave: ${#SSH_PRIVATE_KEY}"
+		env:
+		  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Configurar SSH
         run: |
