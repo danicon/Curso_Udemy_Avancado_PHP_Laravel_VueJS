@@ -10,23 +10,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-		- name: Clonar repositório
-			uses: actions/checkout@v3
+      - name: Clonar repositório
+        uses: actions/checkout@v3
 
-		- name: Configurar SSH
-		  run: |
-			mkdir -p ~/.ssh
-			echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
-			chmod 600 ~/.ssh/id_rsa
-			ssh-keyscan -H 192.168.1.102 >> ~/.ssh/known_hosts
+      - name: Verificar se o Secret está carregado
+        run: |
+          echo "Tamanho da chave: ${#SSH_PRIVATE_KEY}"
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ls -la ~/.ssh
+          cat ~/.ssh/id_ed25519  # Verifique se a chave foi salva corretamente
+          ssh-keyscan -H 192.168.1.102 >> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-		- name: Deploy no Windows Server
-		run: |
-		  ssh danco@192.168.1.102 'powershell -Command "& { 
-			cd C:\Projeto;
-			git pull origin main;
-			composer install --no-interaction --prefer-dist;
-			php artisan migrate --force;
-			php artisan config:cache;
-		  }"'
+      - name: Testar conexão SSH manualmente
+        run: |
+          ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.102 'echo "Conexão SSH bem-sucedida!"'
+        
+      - name: Deploy no Windows Server
+        run: |
+          ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.102 'powershell -Command "& { 
+            Write-Output 'Iniciando deployment...';
+            cd C:\Users\cduser\Projeto;
+            git pull origin main;
+            if ($?) { Write-Output 'Git pull bem-sucedido'; }
+            composer install --no-interaction --prefer-dist;
+            if ($?) { Write-Output 'Instalação do Composer bem-sucedida'; }
+            php artisan migrate --force;
+            if ($?) { Write-Output 'Migração bem-sucedida'; }
+            php artisan config:cache;
+            if ($?) { Write-Output 'Cache de configuração bem-sucedido'; }
+            Write-Output 'Deployment concluído.';}'
