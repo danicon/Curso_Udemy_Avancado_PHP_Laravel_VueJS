@@ -51,7 +51,7 @@ class ProdutoDetalheController extends Controller
         $produto_detalhe = ItemDetalhe::find($id);
         // dd($produto_detalhe);
         $unidades = Unidade::all();
-        return view("app.produto_detalhe.edit", ['produto_detalhe' => $produto_detalhe, 'unidades' => $unidades]);
+        return view("app.produto_detalhe.edit", ['produto_detalhe' => $produto_detalhe, 'unidades' => $unidades]); 
     }
 
     /**
