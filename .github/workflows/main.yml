@@ -20,11 +20,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd C:\Users\cduser\Projeto
-            git pull origin main
-            composer install --no-dev --optimize-autoloader
-            php artisan migrate --force
-            php artisan cache:clear
-            php artisan config:clear
-            php artisan route:clear
-            php artisan queue:restart
+            if [ ! -d "C:/Users/cduser/Projeto/.git" ]; then
+              git clone git@github.com:danicon/Curso_Udemy_Avancado_PHP_Laravel_VueJS.git C:/Users/cduser/Projeto
+            else
+              cd C:/Users/cduser/Projeto
+              git pull origin main
+            fi
