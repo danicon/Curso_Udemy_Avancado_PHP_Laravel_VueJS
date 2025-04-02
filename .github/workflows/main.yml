@@ -26,17 +26,17 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ls -la ~/.ssh
           cat ~/.ssh/id_ed25519  # Verifique se a chave foi salva corretamente
-          ssh-keyscan -H 192.168.1.102 >> ~/.ssh/known_hosts
+          ssh-keyscan -H 192.168.1.103 >> ~/.ssh/known_hosts
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Testar conexão SSH manualmente
         run: |
-          ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.102 'echo "Conexão SSH bem-sucedida!"'
+          ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.103 'echo "Conexão SSH bem-sucedida!"'
         
       - name: Deploy no Windows Server
         run: |
-          ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.102 'powershell -Command "& { 
+          ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.103 'powershell -Command "& { 
             Write-Output 'Iniciando deployment...';
             cd C:\Users\cduser\Projeto;
             git pull origin main;
