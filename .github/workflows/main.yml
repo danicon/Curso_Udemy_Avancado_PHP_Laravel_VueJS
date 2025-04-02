@@ -13,17 +13,12 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Deploy via SSH para Máquina B
-        uses: appleboy/ssh-action@v0.1.7
+      - name: Sincronizar arquivos via SSH
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          timeout: 120s
-          script: |
-            if [ ! -d "C:/Users/cduser/Projeto/.git" ]; then
-              git clone git@github.com:danicon/Curso_Udemy_Avancado_PHP_Laravel_VueJS.git C:/Users/cduser/Projeto
-            else
-              cd C:/Users/cduser/Projeto
-              git pull origin main
-            fi
+          source: "."  # Envia todo o projeto local
+          target: "~/projects/webapp_deploy"  # Destino na Máquina B
+          strip_components: 1  # Remove diretório raiz ao copiar
