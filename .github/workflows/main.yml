@@ -1,4 +1,4 @@
-name: Deploy Laravel Windows
+name: Deploy para Máquina B via SSH
 
 on:
   push:
@@ -10,41 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clonar repositório
+      - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Verificar se o Secret está carregado
-        run: |
-          echo "Tamanho da chave: ${#SSH_PRIVATE_KEY}"
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Configurar SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ls -la ~/.ssh
-          cat ~/.ssh/id_ed25519  # Verifique se a chave foi salva corretamente
-          ssh-keyscan -H 192.168.1.103 >> ~/.ssh/known_hosts
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Testar conexão SSH manualmente
-        run: |
-          ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.103 'echo "Conexão SSH bem-sucedida!"'
-        
-      - name: Deploy no Windows Server
-        run: |
-          ssh -i ~/.ssh/id_ed25519 cduser@192.168.1.103 'powershell -Command "& { 
-            Write-Output 'Iniciando deployment...';
-            cd C:\Users\cduser\Projeto;
-            git pull origin main;
-            if ($?) { Write-Output 'Git pull bem-sucedido'; }
-            composer install --no-interaction --prefer-dist;
-            if ($?) { Write-Output 'Instalação do Composer bem-sucedida'; }
-            php artisan migrate --force;
-            if ($?) { Write-Output 'Migração bem-sucedida'; }
-            php artisan config:cache;
-            if ($?) { Write-Output 'Cache de configuração bem-sucedido'; }
-            Write-Output 'Deployment concluído.';}'
+      - name: Sincronizar arquivos via SSH
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "."  # Envia todo o projeto local
+          target: "~/projects/webapp_deploy"  # Destino na Máquina B
+          strip_components: 1  # Remove diretório raiz ao copiar
