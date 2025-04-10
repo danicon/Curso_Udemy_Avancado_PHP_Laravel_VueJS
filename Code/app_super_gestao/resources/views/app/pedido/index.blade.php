@@ -44,7 +44,7 @@
                                     <a href="#" onclick="document.getElementById('form_{{ $pedido->id }}').submit()">Excluir</a>
                                 </form>
                             </td>   
-                            <td><a href="{{ route("cliente.edit", ['pedido' => $pedido->id]) }}">Editar</a></td>    
+                            <td><a href="{{ route("pedido.edit", ['pedido' => $pedido->id]) }}">Editar</a></td>    
                         </tr>
                         @endforeach
                     </tbody>
