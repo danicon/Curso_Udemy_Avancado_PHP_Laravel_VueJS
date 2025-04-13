@@ -1670,3 +1670,32 @@ Listando as rotas
 
 php artisan route:list
 ```
+
+## Integrar Bootstrap 5 no Laravel 10 com Vite
+
+# Requisito
+Node.js (16+)
+
+Intalando as dependencias do Node.js
+```
+
+npm install
+```
+
+Intalando bootstrap
+```
+
+npm i --save bootstrap @popperjs/core
+```
+
+Intalando sass (extenção do CSS)
+```
+
+npm i --save-dev sass
+```
+
+Startando o Vite (em outro terminal esta startando com php artisan serve)
+```
+
+npm run dev
+```

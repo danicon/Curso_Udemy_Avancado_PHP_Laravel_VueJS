@@ -20,7 +20,7 @@
         <div class="informacao-pagina">
             <div style="width: 90%; margin-left: auto; margin-right: auto;">
                 {{-- {{ $produtos->toJson() }} --}}
-                <table border="1" width="100%">
+                <table border="1" width="100%" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -64,12 +64,14 @@
 
                         <tr>
                             <td colspan="12">
-                                <p>Pedidos</p>
-                                @foreach($produto->pedidos as $pedido)
-                                    <a href="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">
-                                        Pedido: {{ $pedido->id }},
-                                    </a>
-                                @endforeach
+                                <table class="table mb-0">
+                                    <p>Pedidos</p>
+                                    @foreach($produto->pedidos as $pedido)
+                                        <a href="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">
+                                            Pedido: {{ $pedido->id }},
+                                        </a>
+                                    @endforeach
+                                </table>
                             </td>
                         </tr>
                         @endforeach

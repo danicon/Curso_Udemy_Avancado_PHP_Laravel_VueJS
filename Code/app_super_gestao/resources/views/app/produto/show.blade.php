@@ -19,7 +19,7 @@
 
         <div class="informacao-pagina">
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
-                <table border="1" style="text-align: left;">
+                <table border="1" style="text-align: left;" class="table table-striped table-bordered">
                     <tr>
                         <td>ID:</td>
                         <td>{{ $produto->id }}</td>

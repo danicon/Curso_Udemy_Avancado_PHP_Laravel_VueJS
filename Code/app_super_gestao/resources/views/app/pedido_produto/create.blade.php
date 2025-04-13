@@ -24,7 +24,7 @@
             
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
                 <h4>Itens do pedido</h4>
-                <table border='1' width='100%'>
+                <table border='1' width='100%' class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
