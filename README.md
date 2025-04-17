@@ -1713,3 +1713,21 @@ Instalando o Laravel UI
 
 composer require laravel/ui
 ```
+
+Pacote UI e iniciando a autenticação WEB nativa do Laravel
+```
+
+php artisan ui bootstrap --auth
+```
+
+Instalar as dependecias do package.json
+```
+
+npm install
+```
+
+Executar o Bandou
+```
+
+npm run dev
+```
