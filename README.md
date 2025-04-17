@@ -1707,3 +1707,9 @@ Criando o projeto
 
 composer create-project --prefer-dist laravel/laravel app-controle-tarefas
 ```
+
+Instalando o Laravel UI
+```
+
+composer require laravel/ui
+```
