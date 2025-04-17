@@ -1707,9 +1707,3 @@ Criando o projeto
 
 composer create-project --prefer-dist laravel/laravel app-controle-tarefas
 ```
-
-Instalando o NodeJS e o NPM
-```
-
-
-```
