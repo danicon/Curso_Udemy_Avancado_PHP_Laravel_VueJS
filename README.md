@@ -1671,9 +1671,9 @@ Listando as rotas
 php artisan route:list
 ```
 
-## Integrar Bootstrap 5 no Laravel 10 com Vite
+# Integrar Bootstrap 5 no Laravel 10 com Vite
 
-# Requisito
+## Requisito
 Node.js (16+)
 
 Intalando as dependencias do Node.js
@@ -1698,4 +1698,18 @@ Startando o Vite (em outro terminal esta startando com php artisan serve)
 ```
 
 npm run dev
+```
+
+# Projeto Controle de Tarefas
+
+Criando o projeto
+```
+
+composer create-project --prefer-dist laravel/laravel app-controle-tarefas
+```
+
+Instalando o NodeJS e o NPM
+```
+
+
 ```
