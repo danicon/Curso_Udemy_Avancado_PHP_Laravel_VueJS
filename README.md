@@ -1731,3 +1731,9 @@ Executar o Bandou
 
 npm run dev
 ```
+
+Criando o Model e o Controller
+```
+
+php artisan make:controller --resource TarefaController --model=Tarefa
+```
