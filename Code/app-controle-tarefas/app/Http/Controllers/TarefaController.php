@@ -10,9 +10,14 @@ class TarefaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
+     public function index()
     {
-        //
+        return "Chegamos na index do TarefaController";
     }
 
     /**
