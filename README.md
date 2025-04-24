@@ -1743,3 +1743,11 @@ Criando um template de e-mail com Markdown Mailables
 
 php artisan make:mail MensagemTesteMail --markdown emails.mensagem-teste
 ```
+
+Usando Tinker para Enviando e-mails
+```
+
+> use App\Mail\MensagemTesteMail;
+> Mail::to('dancon.alferes@gmail.com')->send(new MensagemTesteMail());
+= Illuminate\Mail\SentMessage {#6270}
+```
