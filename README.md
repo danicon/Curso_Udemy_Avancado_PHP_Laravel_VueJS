@@ -1737,3 +1737,9 @@ Criando o Model e o Controller
 
 php artisan make:controller --resource TarefaController --model=Tarefa
 ```
+
+Criando um template de e-mail com Markdown Mailables
+```
+
+php artisan make:mail MensagemTesteMail --markdown emails.mensagem-teste
+```
