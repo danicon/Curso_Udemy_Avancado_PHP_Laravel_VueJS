@@ -1757,3 +1757,9 @@ Publicando o template de e-mail
 
 php artisan vendor:publish
 ```
+
+Criando uma classe de notificação para Configurando o envio de e-mails 
+```
+
+php artisan make:notification RedefinirSenhaNotification
+```
