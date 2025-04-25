@@ -1751,3 +1751,9 @@ Usando Tinker para Enviando e-mails
 > Mail::to('dancon.alferes@gmail.com')->send(new MensagemTesteMail());
 = Illuminate\Mail\SentMessage {#6270}
 ```
+
+Publicando o template de e-mail
+```
+
+php artisan vendor:publish
+```

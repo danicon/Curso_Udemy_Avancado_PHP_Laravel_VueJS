@@ -3,8 +3,16 @@
 
 O corpo da mensagem.
 
+- Opção 1
+- Opção 2
+- Opção 3
+
 <x-mail::button :url="''">
-Texto do botão
+Texto do botão 1
+</x-mail::button>
+
+<x-mail::button :url="''">
+Texto do botão 2
 </x-mail::button>
 
 Obrigado,<br>
