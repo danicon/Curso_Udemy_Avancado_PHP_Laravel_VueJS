@@ -54,7 +54,7 @@ class TarefaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tarefa.create');
     }
 
     /**
@@ -62,7 +62,23 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $regras = [
+            'tarefa' => 'required',
+            'data_limite_conclusao' => 'required|date'
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é obrigatorio',
+            'data_limite_conclusao.date' => 'O campo :attribute deve ser uma data válida'
+        ];
+
+        $request->validate($regras, $feedback);
+
+
+        // dd($request->all());
+        $tarefa = Tarefa::create($request->all());
+        return redirect()->route('tarefa.show', ['tarefa' => $tarefa->id]);
+        // dd($tarefa->id);
     }
 
     /**
@@ -70,7 +86,7 @@ class TarefaController extends Controller
      */
     public function show(Tarefa $tarefa)
     {
-        //
+        dd($tarefa->getAttributes());
     }
 
     /**
