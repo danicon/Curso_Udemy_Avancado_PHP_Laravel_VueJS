@@ -110,7 +110,13 @@ class TarefaController extends Controller
      */
     public function edit(Tarefa $tarefa)
     {
-        return view('tarefa.edit', ['tarefa' => $tarefa]);
+        $user_id = Auth::user()->id;
+        // dd($tarefa);
+        if($tarefa->user_id == $user_id) {
+            return view('tarefa.edit', ['tarefa' => $tarefa]);
+        } else {
+            return view('acesso-negado');
+        }
     }
 
     /**
@@ -133,6 +139,10 @@ class TarefaController extends Controller
         ];
 
         $request->validate($regras, $feedback);
+
+        if(!$tarefa->user_id == Auth::user()->id) {
+            return view('acesso-negado');
+        }
 
         $tarefa->update($request->all());
         return redirect()->route('tarefa.show', ['tarefa' => $tarefa->id]);
