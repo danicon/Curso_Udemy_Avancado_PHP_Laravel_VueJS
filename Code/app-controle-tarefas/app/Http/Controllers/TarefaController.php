@@ -22,7 +22,7 @@ class TarefaController extends Controller
     {
         $user_id = Auth::user()->id;
         // dd($user_id);
-        $tarefas = Tarefa::where('User_id', $user_id)->get();
+        $tarefas = Tarefa::where('User_id', $user_id)->paginate(10);
         return view('tarefa.index', ['tarefas' => $tarefas]);
 
         // $id = Auth::user()->id;
