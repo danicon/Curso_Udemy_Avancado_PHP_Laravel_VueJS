@@ -1763,3 +1763,9 @@ Criando uma classe de notificação para Configurando o envio de e-mails
 
 php artisan make:notification RedefinirSenhaNotification
 ```
+
+Instalando o pacote Laravel Excel
+```
+
+composer require maatwebsite/excel
+```
