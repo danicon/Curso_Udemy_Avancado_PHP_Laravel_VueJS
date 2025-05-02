@@ -1767,5 +1767,23 @@ php artisan make:notification RedefinirSenhaNotification
 Instalando o pacote Laravel Excel
 ```
 
-composer require maatwebsite/excel
+composer require maatwebsite/excel:^3.1.55
+
+  Requisitos:
+    "laravel/framework": "^11.0"
+    php.ini:
+      extension=gd,
+      extension=zip
+```
+
+Publicar a configuração do excel
+```
+
+php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
+```
+
+Crie uma classe de exportação
+```
+
+php artisan make:export TarefasExport --model=Tarefa
 ```
