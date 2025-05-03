@@ -1787,3 +1787,9 @@ Crie uma classe de exportação
 
 php artisan make:export TarefasExport --model=Tarefa
 ```
+
+Instalando o MPDF
+```
+
+composer require mpdf/mpdf:^8.2
+```
