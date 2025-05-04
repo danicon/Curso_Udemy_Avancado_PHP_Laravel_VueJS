@@ -1793,3 +1793,15 @@ Instalando o MPDF
 
 composer require mpdf/mpdf:^8.2
 ```
+
+Instalando o DOMPDF
+```
+
+composer require barryvdh/laravel-dompdf
+```
+
+Publicar o arquivo de configuração DOMPDF
+```
+
+php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+```
