@@ -8,6 +8,27 @@
     <title>Document</title>
 </head>
 <body>
-    Teste Live Server
+    <div id="app">
+        {{ mensagem }}
+    </div>
+
+    <script>
+        // options = {
+        //     el: '#app', // # para selecionar por id | . para selecionar por classe
+        //     data: { // variaveis/atributos reativos
+        //         mensagem: 'Primeiro template controlado pelo Vue'
+        //     }
+        // }
+
+        const vm = new Vue({
+            el: '#app', // # para selecionar por id | . para selecionar por classe
+            data: { // variaveis/atributos reativos
+                mensagem: 'Primeiro template controlado pelo Vue'
+            }
+        }) //vm = view model
+
+        // console.log(vm) //vm é o objeto Vue que foi criado
+
+    </script>
 </body>
 </html>
