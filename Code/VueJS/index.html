@@ -13,7 +13,6 @@
         {{ subtrair() }}<br>
         {{ multiplicar() }}<br>
         {{ dividir() }}<br>
-        {{ numeroAleatorio() }}<br>
     </div>
 
     <script>
@@ -26,22 +25,22 @@
 
         const vm = new Vue({
             el: '#app', // # para selecionar por id | . para selecionar por classe
-            data: { }, // variaveis/atributos reativos 
+            data: { 
+                n1: 10,
+                n2: 5
+            }, // variaveis/atributos reativos 
             methods: {
                 somar: function somar() { // covencional
-                    return 4 + 2
+                    return this.n1 + this.n2
                 },
                 subtrair: function() { //anônima
-                    return 4 - 2
+                    return this.n1 - this.n2
                 },
                 multiplicar: () => { //arrow function
-                    return 4 * 2
+                    return this.n1 * this.n2 //contexto léxico
                 },
                 dividir() { //forma enxuta de definir os pares de chave/valor
-                    return 4 / 2
-                },
-                numeroAleatorio: function numeroAleatorio() {
-                    return Math.random();
+                    return this.n1 / this.n2
                 }
             }
 
