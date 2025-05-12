@@ -37,9 +37,16 @@
                     return this.n1 - this.n2
                 },
                 multiplicar: () => { //arrow function
+                    //console.log(this) //this é o objeto global (window)
                     return this.n1 * this.n2 //contexto léxico
                 },
                 dividir() { //forma enxuta de definir os pares de chave/valor
+                    // let f = () => {
+                    //     console.log('********', this)
+                    //     return 'Teste'
+                    // }
+                    // console.log(f())
+                    // console.log(this)
                     return this.n1 / this.n2
                 }
             }
