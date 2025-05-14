@@ -6,13 +6,18 @@
     <script src="./vue.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
     <title>Document</title>
+    <style>
+        .verde {
+            color:green;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        {{ somar() }}<br>
-        {{ subtrair() }}<br>
-        {{ multiplicar() }}<br>
-        {{ dividir() }}<br>
+       <a v-bind:href="site">Site</a>
+       <p v-bind:class="cor">Entendendo a diretiva v-bind</p>
+       <input type="text" v-bind:placeholder="instrucaoDePreencimento" v-bind:value="valor">
+       <input type="checkbox"  v-bind:checked="check">
     </div>
 
     <script>
@@ -26,29 +31,14 @@
         const vm = new Vue({
             el: '#app', // # para selecionar por id | . para selecionar por classe
             data: { 
-                n1: 10,
-                n2: 5
+              site: 'https://jorgesantana.net.br',
+              cor: 'verde',
+              instrucaoDePreencimento: 'Placeholder - Diretiva v-bind',
+              valor: 'Entendendo a diretiva v-bind',
+              check: true
             }, // variaveis/atributos reativos 
             methods: {
-                somar: function somar() { // covencional
-                    return this.n1 + this.n2
-                },
-                subtrair: function() { //anônima
-                    return this.n1 - this.n2
-                },
-                multiplicar: () => { //arrow function
-                    //console.log(this) //this é o objeto global (window)
-                    return this.n1 * this.n2 //contexto léxico
-                },
-                dividir() { //forma enxuta de definir os pares de chave/valor
-                    // let f = () => {
-                    //     console.log('********', this)
-                    //     return 'Teste'
-                    // }
-                    // console.log(f())
-                    // console.log(this)
-                    return this.n1 / this.n2
-                }
+                
             }
 
         }) //vm = view model
