@@ -18,9 +18,8 @@
 </head>
 <body>
     <div id="app">
-      {{ mensagem.substr(0,3) }}
-      {{ 2 + 2 }}
-      <input :value="2 + 2" :class="teste ? 'verde' : estilo" />
+      <input type="text" @keyup="imprimirTexto()">
+      <button @click="mensagemAlerta()">Botão</button>
     </div>
 
     <script>
@@ -34,12 +33,15 @@
         const vm = new Vue({
             el: '#app', // # para selecionar por id | . para selecionar por classe
             data: { 
-              mensagem: "Expressão",
-              estilo: "azul",
-              teste: true
+              
             }, // variaveis/atributos reativos 
             methods: {
-                
+                imprimirTexto() {
+                    console.log('Teste')
+                },
+                mensagemAlerta() {
+                    alert('Mensagem de alerta')
+                }
             }
 
         }) //vm = view model
