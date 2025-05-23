@@ -12,11 +12,7 @@
 </head>
 <body>
     <div id="app">
-        <p @mouseover="exibirTextoAjuda =  true" @mouseout="exibirTextoAjuda =  false">Exemplo tooltip</p>
-        <div v-show="exibirTextoAjuda">
-            <h3>Título texto ajuda</h3>
-            <p>Conteudo texto ajuda</p>
-        </div>
+        <div v-html="elementosHTML">Texto de <b>exemplo</b></div>
     </div>
 
     <script>
@@ -30,7 +26,7 @@
         const vm = new Vue({
             el: '#app', // # para selecionar por id | . para selecionar por classe
             data: { 
-                exibirTextoAjuda: false,
+                elementosHTML: '<p><b>Site</b></p><a href="https://jorgesantana.net.br">Jorge Sat Ana</a>',
             }, // variaveis/atributos reativos 
             methods: {
                 
