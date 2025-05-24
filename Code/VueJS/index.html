@@ -12,11 +12,9 @@
 </head>
 <body>
     <div id="app">
-        <p v-once>Saldo inicial: {{ saldo }}</p>
-        <p>Saldo atualizado: {{ saldo }}</p>
-        <input type="text" id="valor">
-        <button @click="creditar()">Creditar</button>
-        <button @click="debitar()">Debitar</button>
+       <ul>
+            <li v-for="(curso, chave) in cursos" v-text="chave  +' - '+ curso"></li>
+       </ul>
     </div>
 
     <script>
@@ -30,15 +28,10 @@
         const vm = new Vue({
             el: '#app', // # para selecionar por id | . para selecionar por classe
             data: { 
-                saldo: 1100
+                cursos: ['laravel', 'Web Completo', 'Banco de dados', 'Solid', 'Angular']
             }, // variaveis/atributos reativos 
             methods: {
-                creditar() {
-                    this.saldo += parseFloat(valor.value)
-                },
-                debitar() {
-                    this.saldo -= parseFloat(valor.value)
-                }            }
+                      }
 
         }) //vm = view model
 
