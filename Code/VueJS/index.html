@@ -15,6 +15,23 @@
        <ul>
             <li v-for="(curso, chave) in cursos" v-text="chave  +' - '+ curso"></li>
        </ul>
+       <hr>
+       <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="({titulo, descricao}, chave) in cursos2"> <!-- destructuring assignment -->
+                    <td>{{chave}}</td>
+                    <td>{{titulo}}</td>
+                    <td>{{descricao}}</td>
+                </tr>
+            </tbody>
+       </table>
     </div>
 
     <script>
@@ -28,10 +45,21 @@
         const vm = new Vue({
             el: '#app', // # para selecionar por id | . para selecionar por classe
             data: { 
-                cursos: ['laravel', 'Web Completo', 'Banco de dados', 'Solid', 'Angular']
+                cursos: ['laravel', 'Web Completo', 'Banco de dados', 'Solid', 'Angular'],
+                cursos2: {
+                    1000: { 
+                        titulo: 'Laravel', 
+                        descricao: 'Domine o framework PHP mais poderoso do mundo' 
+                    },
+                    1001: {
+                        titulo: 'Banco de dados',
+                        descricao: 'Aprenda os principais BDs relacionados do mercado' 
+                    }
+                }
             }, // variaveis/atributos reativos 
             methods: {
-                      }
+                      
+            }
 
         }) //vm = view model
 
