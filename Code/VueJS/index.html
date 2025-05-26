@@ -13,6 +13,9 @@
 <body>
     <div id="app">
         <ul>
+            <li v-for="n in numero">{{n}}</li>
+        </ul>
+        <ul>
             <li v-for="(curso, chave) in cursos" v-text="chave  +' - '+ curso"></li>
         </ul>
         <hr>
@@ -56,6 +59,7 @@
         const vm = new Vue({
             el: '#app', // # para selecionar por id | . para selecionar por classe
             data: { 
+                numero: 5,
                 cursos: ['laravel', 'Web Completo', 'Banco de dados', 'Solid', 'Angular'],
                 cursos2: {
                     1000: { 
