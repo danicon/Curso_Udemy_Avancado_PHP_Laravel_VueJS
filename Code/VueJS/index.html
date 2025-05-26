@@ -12,11 +12,11 @@
 </head>
 <body>
     <div id="app">
-       <ul>
+        <ul>
             <li v-for="(curso, chave) in cursos" v-text="chave  +' - '+ curso"></li>
-       </ul>
-       <hr>
-       <table border="1">
+        </ul>
+        <hr>
+        <table border="1">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -31,7 +31,18 @@
                     <td>{{descricao}}</td>
                 </tr>
             </tbody>
-       </table>
+        </table>
+        <hr>
+        <ul>
+            <li v-for="p in publicacoes" style="border: solid 1px; margin-bottom: 10px;" :key="p.id">
+                <div>
+                    {{ p.publicacao }}
+                    <hr>
+                    <input type="text">
+                </div>
+            </li>
+        </ul>
+        <button @click="misturarArray()">Misturar Publicações</button>
     </div>
 
     <script>
@@ -55,10 +66,23 @@
                         titulo: 'Banco de dados',
                         descricao: 'Aprenda os principais BDs relacionados do mercado' 
                     }
-                }
+                },
+                publicacoes: [
+                    { id: 1, publicacao: 'Publicações 1' },
+                    { id: 2, publicacao: 'Publicações 2' },
+                    { id: 3, publicacao: 'Publicações 3' },
+                ]
             }, // variaveis/atributos reativos 
             methods: {
-                      
+                misturarArray() {
+                    let misturado = []
+
+                    misturado[0] = this.publicacoes[2]
+                    misturado[1] = this.publicacoes[0]
+                    misturado[2] = this.publicacoes[1]
+
+                    this.publicacoes = misturado
+                }      
             }
 
         }) //vm = view model
