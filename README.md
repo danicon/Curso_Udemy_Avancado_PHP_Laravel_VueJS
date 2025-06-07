@@ -1805,3 +1805,29 @@ Publicar o arquivo de configuração DOMPDF
 
 php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
 ```
+
+# Projeto Locadora de Carros
+
+Criando os models, controllers e migrations
+```
+
+php artisan make:model --migration --controller --resource  Marca
+```
+
+Criando os models, controllers e migrations - De forma abreviada
+```
+
+php artisan make:model -mcr  Modelo
+```
+
+Criando todos os outro recursos relacionado ao Model (models, controllers, resource, seeders, factory e migrations)
+```
+
+php artisan make:model --all Carro 
+```
+
+Criando todos os outro recursos relacionado ao Model (models, controllers, resource, seeders, factory e migrations) - De forma abreviada
+```
+
+php artisan make:model -a Cliente 
+```
