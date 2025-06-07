@@ -1831,3 +1831,9 @@ Criando todos os outro recursos relacionado ao Model (models, controllers, resou
 
 php artisan make:model -a Cliente 
 ```
+
+Comando instala o Laravel Sanctum para autenticação de token da API e cria o routes/api.phparquivo
+```
+
+php artisan install:api
+```
