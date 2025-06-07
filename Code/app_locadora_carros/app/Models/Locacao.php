@@ -9,4 +9,5 @@ class Locacao extends Model
 {
     /** @use HasFactory<\Database\Factories\LocacaoFactory> */
     use HasFactory;
+    protected $table = 'locacoes';
 }
