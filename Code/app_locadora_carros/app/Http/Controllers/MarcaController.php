@@ -48,7 +48,10 @@ class MarcaController extends Controller
         // dd($request->input('nome'));
 
         // dd($request->imagem);
-        dd($request->file('imagem'));
+        // dd($request->file('imagem'));
+        $imagem = $request->file('imagem');
+        $imagem->store('imagens', 'public');
+        dd('Upload de arquivos');
 
         // $marca = $this->marca->create($request->all());
         return response()->json($marca, 201);
