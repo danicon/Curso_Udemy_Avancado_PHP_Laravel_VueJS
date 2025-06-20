@@ -1837,3 +1837,9 @@ Comando instala o Laravel Sanctum para autenticação de token da API e cria o r
 
 php artisan install:api
 ```
+
+Upload de arquivos - Criando um link simbólico para o disco public
+```
+
+php artisan storage:link
+```
