@@ -100,6 +100,9 @@ class MarcaController extends Controller
         // $marca->update($request->all());
         $marca = $this->marca->find($id);
 
+        // dd($request->nome);
+        // dd($request->file('imagem'));
+
         // dd($marca);
 
         if($marca === null) {
@@ -131,7 +134,15 @@ class MarcaController extends Controller
             $request->validate($marca->rules(), $marca->feedback());
         }
 
-        $marca->update($request->all());
+        $imagem = $request->file('imagem');
+        $imagem_urn = $imagem->store('imagens', 'public');
+        // dd($imagem_urn);
+
+        $marca->update([
+            'nome' => $request->nome,
+            'imagem' => $imagem_urn
+        ]);
+
         return response()->json($marca, 200);
     }
 
