@@ -109,7 +109,7 @@ class ModeloController extends Controller
         }
 
         $imagem = $request->file('imagem');
-        $imagem_urn = $imagem->store('imagens\modelos', 'public');
+        $imagem_urn = $imagem->store('imagens/modelos', 'public');
 
         $modelo->update([
             'marca_id' => $request->marca_id,
