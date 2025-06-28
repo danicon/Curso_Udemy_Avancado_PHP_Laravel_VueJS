@@ -29,9 +29,15 @@ class ModeloController extends Controller
         }
 
         if($request->has('filtro')) {
-            // dd(explode(':',$request->filtro));
-            $condicoes = explode(':',$request->filtro);
-            $modelos = $modelos->where($condicoes[0], $condicoes[1], $condicoes[2]);
+
+            // dd($request->filtro);
+            $filtros = explode(';', $request->filtro);
+            // dd($filtros);
+            foreach($filtros as $key => $condicao) {
+                // dd(explode(':',$request->filtro));
+                $c = explode(':',$condicao);
+                $modelos = $modelos->where($c[0], $c[1], $c[2]);
+            }
         }
 
         if($request->has('atributos')) {
