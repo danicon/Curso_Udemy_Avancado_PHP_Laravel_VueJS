@@ -17,9 +17,32 @@ class ModeloController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json($this->modelo->with('marca')->get(), 200);
+        $modelos = array();
+
+        if($request->has('atributos_marca')) {
+            $atributos_marca = $request->atributos_marca;
+            $modelos = $this->modelo->with('marca:id,'.$atributos_marca);
+        } else {
+            $modelos = $this->modelo->with('marca');
+        }
+
+        if($request->has('atributos')) {
+            $atributos = $request->atributos;
+            // dd($atributos_marca);
+            $modelos = $modelos->selectRaw($atributos)->get();
+            
+            //'id', 'nome', 'imagem'
+            //"id,nome,imagem"
+
+            // dd($request->atributos);
+        } else {
+            $modelos = $modelos->get();
+        }
+        
+        //$this->modelo->with('marca')->get()
+        return response()->json($modelos, 200);
         //all() -> criando um objeto de consulta + get() = collection
         //get() -> modificar a consulta -> collection
     }
