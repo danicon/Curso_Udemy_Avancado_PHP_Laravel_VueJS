@@ -39,7 +39,7 @@ class MarcaController extends Controller
 
         return response()->json($marcaRepository->getResultado(), 200);
 
-        // -------------------------------------------------------------------------
+        //-------------------------------------------------------------------------
         
         /*
         $marcas = array();
