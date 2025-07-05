@@ -9,4 +9,13 @@ class Cliente extends Model
 {
     /** @use HasFactory<\Database\Factories\ClienteFactory> */
     use HasFactory;
+
+    protected $fillable = ['nome'];
+
+    public function rules() {
+        return [
+            'nome' => 'required'
+        ];
+    }
+
 }
