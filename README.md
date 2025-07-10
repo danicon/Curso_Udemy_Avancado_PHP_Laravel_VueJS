@@ -1843,3 +1843,9 @@ Upload de arquivos - Criando um link simbólico para o disco public
 
 php artisan storage:link
 ```
+
+Instalando o pacote JWT-Auth
+```
+
+composer require tymon/jwt-auth
+```
