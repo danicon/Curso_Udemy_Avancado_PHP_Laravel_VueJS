@@ -1849,3 +1849,15 @@ Instalando o pacote JWT-Auth
 
 composer require tymon/jwt-auth
 ```
+
+Publicar a configuração JWT
+```
+
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+```
+
+Gerar chave secreta JWT
+```
+
+php artisan jwt:secret
+```
