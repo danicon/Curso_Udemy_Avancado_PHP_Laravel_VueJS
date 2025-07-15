@@ -1861,3 +1861,9 @@ Gerar chave secreta JWT
 
 php artisan jwt:secret
 ```
+
+Crie um middleware customizado
+```
+
+php artisan make:middleware ApiAuthenticate
+```
