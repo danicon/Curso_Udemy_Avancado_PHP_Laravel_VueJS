@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -31,7 +32,8 @@ class AuthController extends Controller
     }
 
     public function refresh() {
-        return 'refresh';
+        $token = JWTAuth::parseToken()->refresh(); //cliente encaminhe um jwt valido
+        return response()->json(['token' => $token]);
     }
 
     public function me() {
