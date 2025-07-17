@@ -35,6 +35,7 @@ class AuthController extends Controller
     }
 
     public function me() {
-        return 'me';
+        // dd(auth('api')->user());
+        return response()->json(auth('api')->user());
     }
 }
