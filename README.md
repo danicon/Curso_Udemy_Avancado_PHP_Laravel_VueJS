@@ -1867,3 +1867,27 @@ Crie um middleware customizado
 
 php artisan make:middleware ApiAuthenticate
 ```
+
+Instalar o pacote UI
+```
+
+composer require laravel/ui
+```
+
+Gerar o esqueleto do prjeto com VueJS e autenticação web nativa (scaffold/esqueleto)
+```
+
+php artisan ui vue --auth
+```
+
+Baixar as dependencias de front-end
+```
+
+npm install
+```
+
+Produzindo o bundle de front-end
+```
+
+npm run dev
+```
