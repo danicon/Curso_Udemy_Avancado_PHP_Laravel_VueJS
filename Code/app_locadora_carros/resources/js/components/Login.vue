@@ -8,7 +8,7 @@
                     <div class="card-header">Login (Component Vue)</div>
 
                     <div class="card-body">
-                        <form method="POST" action="">
+                        <form method="POST" action="" @submit.prevent="login($event)">
                             <input type="hidden" name="_token" :value="csrf_token">
 
                             <div class="row mb-3">
@@ -24,14 +24,13 @@
                                         required
                                         autocomplete="email"
                                         autofocus
+                                        v-model="email"
                                     />
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label
-                                for="password"
-                                class="col-md-4 col-form-label text-md-end">Senha</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end">Senha</label>
 
                                 <div class="col-md-6">
                                     <input
@@ -41,6 +40,7 @@
                                         name="password"
                                         required
                                         autocomplete="current-password"
+                                        v-model="password"
                                     />
                                 </div>
                             </div>
@@ -73,6 +73,41 @@
 
 <script>
     export default{
-        props: ['csrf_token'] //data (semelhante)
+        props: ['csrf_token'], //data (semelhante)
+        data() {
+            return {
+                email: '',
+                password: ''
+            }
+        },
+        methods: {
+            login(e) {
+
+                // console.log(this.email, this.password)
+                // return false;
+
+                let url = 'http://localhost:8000/api/login'
+                let configuracao = {
+                    method: 'POST',
+                    body: new URLSearchParams({
+                        'email': this.email,
+                        'password': this.password
+                    })
+                }
+
+                fetch(url, configuracao)
+                    // .then(response => console.log(response))
+                    .then(response => response.json())
+                    // .then(data => console.log(data))
+                    .then(data => {
+                        // console.log(data.token)
+                        if(data.token) {
+                            document.cookie = 'token='+data.token+';SameSite=Lax'
+                        }
+                        //dar sequencia no envio do form de autenticação por sessão
+                        e.target.submit()
+                    })
+            }
+        }
     }
 </script>
