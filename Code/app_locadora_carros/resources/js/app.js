@@ -23,6 +23,8 @@ import HomeComponent from './components/Home.vue';
 app.component('home-component', HomeComponent);
 import MarcasComponent from './components/Marcas.vue';
 app.component('marcas-component', MarcasComponent);
+import InputComponent from './components/InputContainer.vue';
+app.component('input-container-component', InputComponent);
 
 /**
  * The following block of code may be used to automatically register your
