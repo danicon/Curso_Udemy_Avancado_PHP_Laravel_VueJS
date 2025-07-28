@@ -25,6 +25,8 @@ import MarcasComponent from './components/Marcas.vue';
 app.component('marcas-component', MarcasComponent);
 import InputComponent from './components/InputContainer.vue';
 app.component('input-container-component', InputComponent);
+import TableComponent from './components/Table.vue';
+app.component('table-component', TableComponent);
 
 /**
  * The following block of code may be used to automatically register your
