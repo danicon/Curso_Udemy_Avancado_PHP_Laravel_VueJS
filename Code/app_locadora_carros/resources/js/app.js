@@ -27,6 +27,8 @@ import InputComponent from './components/InputContainer.vue';
 app.component('input-container-component', InputComponent);
 import TableComponent from './components/Table.vue';
 app.component('table-component', TableComponent);
+import CardComponent from './components/Card.vue';
+app.component('card-component', CardComponent);
 
 /**
  * The following block of code may be used to automatically register your
