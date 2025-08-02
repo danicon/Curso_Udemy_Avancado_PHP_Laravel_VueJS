@@ -29,6 +29,8 @@ import TableComponent from './components/Table.vue';
 app.component('table-component', TableComponent);
 import CardComponent from './components/Card.vue';
 app.component('card-component', CardComponent);
+import ModalComponent from './components/Modal.vue';
+app.component('modal-component', ModalComponent);
 
 /**
  * The following block of code may be used to automatically register your
