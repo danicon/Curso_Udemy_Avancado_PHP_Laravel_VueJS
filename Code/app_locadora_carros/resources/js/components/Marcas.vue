@@ -77,7 +77,7 @@
     export default {
         data() {
             return {
-                urlBase: 'http://localhost:8000/api/v1/marca',
+                urlBase: 'http://127.0.0.1:8000/api/v1/marca',
                 nomeMarca: '',
                 arquivoImagem: []
             }
@@ -96,7 +96,7 @@
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
+                        'Accept': 'application/json'
                     }
                 }
 
