@@ -34,7 +34,7 @@
                 <card-component titulo="Relação de marcas">
                     <template v-slot:conteudo>
                         <table-component 
-                            :dados="marcas.data || []" 
+                            :dados="marcas.data" 
                             :titulos="{
                                 id: {titulo: 'ID', tipo: 'texto'},
                                 nome: {titulo: 'Nome', tipo: 'texto'},
@@ -114,7 +114,7 @@ import Alert from './Alert.vue'
                 arquivoImagem: [],
                 transacaoStatus: '',
                 transacaoDetalhes: {},
-                marcas: []
+                marcas: { data: [] }
             }
         },
         methods: {
@@ -135,6 +135,8 @@ import Alert from './Alert.vue'
                 .catch(errors => {
                     console.log(errors)
                 })
+
+                // console.log(this.marcas)
             },
             carregarImagem(e) {
                 this.arquivoImagem = e.target.files

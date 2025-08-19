@@ -50,6 +50,7 @@
         computed: {
             dadosFiltrados() {
 
+                // console.log(this.dados)
                 let campos = Object.keys(this.titulos)
                 let dadosFiltrados = []
                 // console.log(campos)
