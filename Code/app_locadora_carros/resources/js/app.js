@@ -33,6 +33,8 @@ import ModalComponent from './components/Modal.vue';
 app.component('modal-component', ModalComponent);
 import AlertComponent from './components/Alert.vue';
 app.component('alert-component', AlertComponent);
+import PaginateComponent from './components/Paginate.vue';
+app.component('paginate-component', PaginateComponent);
 
 /**
  * The following block of code may be used to automatically register your
