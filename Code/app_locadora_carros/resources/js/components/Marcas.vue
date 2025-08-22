@@ -10,14 +10,14 @@
                             <div class="col mb-3">
 
                                 <input-container-component titulo="ID" id="inputId" id-help="idHelp" texto-ajuda="Opcional. Informe o ID da marca">
-                                    <input type="number" class="form-control" id="inputId" aria-describedby="idHelp" placeholder="ID">
+                                    <input type="number" class="form-control" id="inputId" aria-describedby="idHelp" placeholder="ID" v-model="busca.id">
                                 </input-container-component>                                      
                                 
                             </div>
                             <div class="col mb-3">
 
                                 <input-container-component titulo="Nome da marca" id="inputNome" id-help="nomeHelp" texto-ajuda="Opcional. Informe o nome da marca">
-                                    <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp" placeholder="Nome da marca">
+                                    <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp" placeholder="Nome da marca" v-model="busca.nome">
                                 </input-container-component>  
 
                             </div>      
@@ -25,7 +25,7 @@
                     </template>
 
                     <template v-slot:rodape>
-                        <button type="submit" class="btn btn-primary btn-sm float-end">Pesquisar</button>
+                        <button type="submit" class="btn btn-primary btn-sm float-end" @click="pesquisar()">Pesquisar</button>
                     </template>
                 </card-component>
                 <!-- Final do card de busca -->
@@ -131,17 +131,41 @@ import Paginate from './Paginate.vue'
                 arquivoImagem: [],
                 transacaoStatus: '',
                 transacaoDetalhes: {},
-                marcas: { data: [] }
+                marcas: { 
+                    data: []
+                },
+                busca: {
+                    id: '',
+                    nome: ''
+                }
             }
         },
         methods: {
-        paginacao(l) {
-            // console.log(l.url)
-            if(l.url) {
-                this.urlBase = l.url //ajustando a url com o parametro da paginação
-                this.carregarLista() //requistando novamente os dados para a nossa API
-            }
-        },
+            pesquisar() {
+                // console.log(this.busca)
+
+                let filtro = ''
+
+                for(let chave in this.busca) {
+
+                    if(this.busca[chave]) {           
+                        // console.log(chave, this.busca[chave])
+                        if(filtro != '') {
+                            filtro += ";"
+                        }
+                        filtro += chave + ':like:' + this.busca[chave] 
+                    }
+                }
+
+                console.log(filtro)
+            },
+            paginacao(l) {
+                // console.log(l.url)
+                if(l.url) {
+                    this.urlBase = l.url //ajustando a url com o parametro da paginação
+                    this.carregarLista() //requistando novamente os dados para a nossa API
+                }
+            },
             carregarLista() {
 
                 let config = {
