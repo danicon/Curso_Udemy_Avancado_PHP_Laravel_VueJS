@@ -127,6 +127,8 @@ import Paginate from './Paginate.vue'
         data() {
             return {
                 urlBase: 'http://127.0.0.1:8000/api/v1/marca',
+                urlPaginacao: '',
+                urlFiltro: '',
                 nomeMarca: '',
                 arquivoImagem: [],
                 transacaoStatus: '',
@@ -157,17 +159,27 @@ import Paginate from './Paginate.vue'
                     }
                 }
 
-                console.log(filtro)
+                // console.log(filtro)
+                if(filtro != '') {
+                    this.urlPaginacao = 'page=1'
+                    this.urlFiltro = '&filtro=' + filtro
+                } else {
+                    this.urlFiltro = ''
+                }
+                this.carregarLista()
+                
             },
             paginacao(l) {
                 // console.log(l.url)
                 if(l.url) {
-                    this.urlBase = l.url //ajustando a url com o parametro da paginação
+                    //this.urlBase = l.url //ajustando a url com o parametro da paginação
+                    console.log('url do botão de paginação clicado', l.url.split('?')[1])
+                    this.urlPaginacao = l.url.split('?')[1]
                     this.carregarLista() //requistando novamente os dados para a nossa API
                 }
             },
             carregarLista() {
-
+         
                 let config = {
                     headers: {
                         'Accept': 'application/json',
@@ -175,7 +187,10 @@ import Paginate from './Paginate.vue'
                     }
                 }
 
-                axios.get(this.urlBase, config)
+                let url = this.urlBase + '?' + this.urlPaginacao + this.urlFiltro
+                console.log(url)
+
+                axios.get(url, config)
                 .then(response => {
                     this.marcas = response.data
                     // console.log(this.marcas)
