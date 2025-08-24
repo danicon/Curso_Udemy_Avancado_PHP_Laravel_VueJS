@@ -73,6 +73,7 @@
             </div>
         </div>
 
+        <!-- Inicio do modal de inclusão de marca  -->
         <modal-component id="modalMarca" titulo="Adicionar marca">
 
             <template v-slot:alertas>
@@ -102,6 +103,24 @@
             </template>
 
         </modal-component>
+        <!-- Fim do modal de inclusão de marca  -->
+
+        <!-- inicio do modal de visualização de marca  -->
+        <modal-component id="modalMarcaVisualizar" titulo="Visualizar marca">
+            <template v-slot:alertas>
+
+            </template>
+
+            <template v-slot:conteudo>
+                Teste
+            </template>
+
+            <template v-slot:rodape>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </template>
+
+        </modal-component>
+        <!-- fim do modal de visualização de marca  -->
 
         <!-- <button type="button" @click="carregarLista()">Teste</button> -->
 
@@ -112,7 +131,7 @@
 import Alert from './Alert.vue'
 import Paginate from './Paginate.vue'
     export default {
-  components: { Alert, Paginate },
+        components: { Alert, Paginate },
         computed: {
             token() {
 
