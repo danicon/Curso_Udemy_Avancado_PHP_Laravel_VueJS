@@ -1891,3 +1891,9 @@ Produzindo o bundle de front-end
 
 npm run dev
 ```
+
+Instalando o Vuex
+```
+
+npm install vuex
+```
