@@ -12,7 +12,7 @@ import { createStore } from 'vuex';
 
 const store = createStore({
     state: {
-        teste: 'Teste de recuperação de valor da Store do Vuex'
+        item: {}
     }
 });
 
