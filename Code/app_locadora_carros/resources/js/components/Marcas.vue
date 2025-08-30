@@ -147,10 +147,11 @@
          <!-- inicio do modal de remoção de marca  -->
         <modal-component id="modalMarcaRemover" titulo="Remover marca">
             <template v-slot:alertas>
-
+                <alert-component tipo="success" titulo="Transação realizada com sucesso" :detalhes="$store.state.transacao" v-if="$store.state.transacao.status == 'sucesso'"></alert-component>
+                <alert-component tipo="danger" titulo="Erro na transação" :detalhes="$store.state.transacao" v-if="$store.state.transacao.status == 'erro'"></alert-component>
             </template>
 
-            <template v-slot:conteudo>
+            <template v-slot:conteudo v-if="$store.state.transacao.status != 'sucesso'">
                 <input-container-component titulo="ID">
                     <input type="text" class="form-control" :value="$store.state.item.id" disabled>
                 </input-container-component>
@@ -163,7 +164,7 @@
 
             <template v-slot:rodape>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-danger" @click="remover()">Remover</button>
+                <button type="button" class="btn btn-danger" @click="remover()" v-if="$store.state.transacao.status != 'sucesso'">Remover</button>
             </template>
 
         </modal-component>
@@ -229,15 +230,22 @@ import Paginate from './Paginate.vue'
                 }
 
                 let url = this.urlBase + '/' + this.$store.state.item.id
-                console.log(url)
+                // let url = this.urlBase + '/1450'
+                // console.log(url)
+
+                // console.log(this.$store.state.transacao)
 
                 axios.post(url, formData, config)
                     .then(response => {
-                        console.log('Registro removido com sucesso', response)
+                        // console.log('Registro removido com sucesso', response)
+                        this.$store.state.transacao.status = 'sucesso'
+                        this.$store.state.transacao.mensagem = response.data.msg
                         this.carregarLista()
                     })
                     .catch(errors => {
-                        console.log('Houve um erro na tentativa de remoção do registro', errors.response)
+                        // console.log('Houve um erro na tentativa de remoção do registro', errors.response)
+                        this.$store.state.transacao.status = 'erro'
+                        this.$store.state.transacao.mensagem = errors.response.data.erro
                     })
 
             },
