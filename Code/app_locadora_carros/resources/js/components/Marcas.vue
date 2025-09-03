@@ -184,7 +184,7 @@
             <template v-slot:conteudo>
                 <div class="form-group">
                     <input-container-component titulo="Nome da marca" id="atualizarNome" id-help="atualizarNomeHelp" texto-ajuda="Informe o nome da marca">
-                        <input type="text" class="form-control" id="atualizarNome" aria-describedby="atualizarNomeHelp" placeholder="Nome da marca" v-model="nomeMarca">
+                        <input type="text" class="form-control" id="atualizarNome" aria-describedby="atualizarNomeHelp" placeholder="Nome da marca" v-model="$store.state.item.nome">
                     </input-container-component> 
                 </div>
 
@@ -193,6 +193,8 @@
                         <input type="file" class="form-control" id="atualizarImagem" aria-describedby="atualizarImagemHelp" placeholder="Selecione uma imagem" @change="carregarImagem($event)">
                     </input-container-component>
                 </div>
+
+                {{$store.state.item}}
             </template>
 
             <template v-slot:rodape>
@@ -248,7 +250,33 @@ import Paginate from './Paginate.vue'
         },
         methods: {
             atualizar() {
-                console.log(this.$store.state.item)
+                console.log('nome atualizado', this.$store.state.item.nome)
+                console.log('imagem', this.arquivoImagem)
+                console.log('verbo http', 'patch')
+
+                let formData = new FormData();
+                formData.append('_method', 'patch')
+                formData.append('nome', this.$store.state.item.nome)
+                formData.append('imagem', this.arquivoImagem[0])
+
+                let url = this.urlBase + '/' + this.$store.state.item.id
+
+                let config = {
+                    headers: {
+                        'content-type': 'multipart/form-data',
+                        'Accept': 'application/json',
+                        'Authorization': this.token
+                    }
+                }
+
+                axios.post(url, formData, config)
+                    .then(response => {
+                        console.log('Atulizado', response)
+                        this.carregarLista()
+                    })
+                    .catch(errors => {
+                        console.log('Erro de atualização', errors.response)
+                    })
             },
             remover() {
                 let confirmacao = confirm('Tem certeza que deseja remover este registro?')
