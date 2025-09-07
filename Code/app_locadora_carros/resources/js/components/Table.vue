@@ -55,7 +55,7 @@
         props: ['dados', 'titulos', 'atualizar', 'visualizar', 'remover'],
         methods: {
             setStore(obj) {
-                this.$store.state.transacao = {status: '', mensagem: ''}
+                this.$store.state.transacao = {status: '', mensagem: '', dados: ''}
                 this.$store.state.item = obj
                 // console.log(obj)
             }
