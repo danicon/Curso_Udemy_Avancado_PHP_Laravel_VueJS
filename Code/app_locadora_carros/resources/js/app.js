@@ -29,6 +29,30 @@ const store = createStore({
 
 const app = createApp({});
 
+app.config.globalProperties.$filters = {
+    formataDataTempoGlobal(d) {
+        if(!d) return ''
+
+        d = d.split('T')
+
+        let data = d[0]
+        let tempo = d[1]
+
+        //formatando a data
+        data = data.split('-')
+        data = data[2] + '/' + data[1] + '/' + data[0]
+
+        //formatar o tempo
+        tempo = tempo.split('.')
+        tempo = tempo[0]
+
+        // console.log(data)
+        console.log(tempo)
+
+        return data + ' ' + tempo
+    }
+};
+
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
 import LoginComponent from './components/Login.vue';
