@@ -47,7 +47,7 @@ app.config.globalProperties.$filters = {
         tempo = tempo[0]
 
         // console.log(data)
-        console.log(tempo)
+        // console.log(tempo)
 
         return data + ' ' + tempo
     }

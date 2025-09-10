@@ -371,7 +371,7 @@ import Paginate from './Paginate.vue'
                 }
 
                 let url = this.urlBase + '?' + this.urlPaginacao + this.urlFiltro
-                console.log(url)
+                // console.log(url)
 
                 axios.get(url, config)
                 .then(response => {
