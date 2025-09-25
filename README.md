@@ -1897,3 +1897,17 @@ Instalando o Vuex
 
 npm install vuex
 ```
+
+# Projeto Portal de Notícias
+
+Atualizando o composer
+```
+
+composer self-update
+```
+
+Após instalar o Redis (BD de canche), pode executalo no cmd
+```
+
+redis-cli
+```
