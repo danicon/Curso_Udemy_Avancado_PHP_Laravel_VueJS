@@ -1911,3 +1911,21 @@ Após instalar o Redis (BD de canche), pode executalo no cmd
 
 redis-cli
 ```
+
+Iniciando o projeto Portal de Notícias
+```
+
+composer create-project --prefer-dist laravel/laravel app_portal_noticias
+```
+
+Criando model, seeder, controller, factory...
+```
+
+php artisan make:model Noticia -a
+```
+
+Iniciando as migrations
+```
+
+php artisan migrate
+```
