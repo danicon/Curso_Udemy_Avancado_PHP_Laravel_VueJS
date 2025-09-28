@@ -9,4 +9,7 @@ class Noticia extends Model
 {
     /** @use HasFactory<\Database\Factories\NoticiaFactory> */
     use HasFactory;
+
+    protected $fillabel = ['titulo', 'noticia'];
+    
 }

@@ -1929,3 +1929,9 @@ Iniciando as migrations
 
 php artisan migrate
 ```
+
+Implementando a Factory e a Seeder para popular a tabela de notícias
+```
+
+php artisan db:seed --class=NoticiaSeeder
+```
