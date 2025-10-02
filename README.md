@@ -1935,3 +1935,9 @@ Implementando a Factory e a Seeder para popular a tabela de notícias
 
 php artisan db:seed --class=NoticiaSeeder
 ```
+
+Instalando o pacote Debugbar para monitorar o tempo de execução das querys
+```
+
+composer require barryvdh/laravel-debugbar --dev
+```
