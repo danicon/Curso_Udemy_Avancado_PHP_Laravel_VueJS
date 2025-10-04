@@ -1941,3 +1941,9 @@ Instalando o pacote Debugbar para monitorar o tempo de execução das querys
 
 composer require barryvdh/laravel-debugbar --dev
 ```
+
+Instalando e configurando o pacote Predis para conectar o Laravel com o Redis
+```
+
+composer require predis/predis
+```
