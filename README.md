@@ -1947,3 +1947,15 @@ Instalando e configurando o pacote Predis para conectar o Laravel com o Redis
 
 composer require predis/predis
 ```
+
+Comand line intyerface do redis
+```
+
+redis-cli
+```
+
+Retorna todos os comando processados pelo servidor redis
+```
+
+127.0.0.1:6379> monitor
+```
